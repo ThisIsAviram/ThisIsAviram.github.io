@@ -1,0 +1,3 @@
+Newsreader, Inter, Frank Ruhl Libre, Heebo, IBM Plex Mono — SIL Open Font License 1.1.
+Self-hosted from the @fontsource packages so no visitor request goes to a third party.
+static/art/medal-2nd.svg — Google Noto Emoji (🥈), Apache License 2.0, via @iconify-json/noto.

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html data-l="en" dir="ltr" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>PLAYGROUND — Deck</title>
+<link href="/static/fonts.css" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#F6EFE7;--card:#FFFCF7;--ink:#171B2B;--ink-2:#3A3F52;--mute:#6C6E7C;--ghost:#9A9AA4;--line:#E2DCCF;--ember:#244CFF;--ember-soft:#E4E9FF;--surface-ink:#171B2B;--apricot:#F4AC78;--lilac:#D9D3EC;
+  --display:"Newsreader","Frank Ruhl",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12141D;--card:#1A1D29;--ink:#F3EFE6;--ink-2:#C9C6BE;--mute:#9A9AA4;--ghost:#6C6E7C;
+  --line:#2A2D3A;--ember:#7D93FF;--ember-soft:#1E2547;--surface-ink:#0C0E15;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12141D;--card:#1A1D29;--ink:#F3EFE6;--ink-2:#C9C6BE;--mute:#9A9AA4;--ghost:#6C6E7C;
+  --line:#2A2D3A;--ember:#7D93FF;--ember-soft:#1E2547;--surface-ink:#0C0E15;color-scheme:dark}
+html[data-l="he"]{--display:"Frank Ruhl","Newsreader",Georgia,serif}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;overflow:hidden}
+html[data-l="he"] [lang="en"],html[data-l="en"] [lang="he"]{display:none!important}
+
+/* stage */
+.stage{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
+.frame{width:min(100%,calc((100vh - 76px)*16/9));aspect-ratio:16/9;position:relative;container-type:inline-size;
+  background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.slide{position:absolute;inset:0;padding:5.4cqw 6cqw 4.6cqw;display:none;flex-direction:column;opacity:0;transition:opacity .35s ease}
+.slide.on{display:flex;opacity:1}
+.slide .kick{font:500 1.15cqw/1 var(--mono);letter-spacing:.06em;color:var(--mute);text-transform:uppercase;display:flex;gap:.8cqw;align-items:center;margin:0 0 2.2cqw}
+html[data-l="he"] .slide .kick{font-family:"Heebo";letter-spacing:0;text-transform:none;font-size:1.3cqw}
+.slide .kick::before{content:"";width:.55cqw;height:.55cqw;border-radius:50%;background:var(--ember)}
+h2{font:700 4.1cqw/1.08 var(--display);letter-spacing:-.03em;margin:0 0 2.4cqw;max-width:30ch;text-wrap:balance}
+html[data-l="he"] h2{letter-spacing:-.005em;line-height:1.15}
+h2 .g{color:var(--ghost)}
+p,li{font-size:1.65cqw;line-height:1.5;color:var(--ink-2);margin:0}
+.num{position:absolute;bottom:2.4cqw;inset-inline-end:3cqw;font:500 1.05cqw/1 var(--mono);color:var(--mute)}
+.brand{position:absolute;bottom:2.4cqw;inset-inline-start:3cqw;font:800 1.15cqw/1 "Inter","Heebo",system-ui,sans-serif;letter-spacing:.14em;color:var(--mute)}
+.grid{display:grid;gap:1.3cqw;margin-top:auto}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}
+.box{border:1px solid var(--line);border-radius:1cqw;padding:1.6cqw 1.7cqw;background:var(--paper);display:flex;flex-direction:column;gap:.6cqw}
+.box b{font:700 1.9cqw/1.2 var(--display);color:var(--ink)}
+.box small{font:500 1.05cqw/1.2 var(--mono);color:var(--ember);letter-spacing:.04em}
+html[data-l="he"] .box small{font-family:"Heebo";letter-spacing:0;font-size:1.2cqw}
+.box p{font-size:1.6cqw;line-height:1.5}
+.stat{font:500 6.2cqw/1 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.stat em{font-style:normal;color:var(--ember)}
+.cover{background:var(--surface-ink);color:#F6EFE7}
+.cover .kick{color:#B9B6C6}
+.cover h1{font:500 10.5cqw/.92 var(--display);letter-spacing:-.03em;margin:auto 0 1.6cqw;color:#F6EFE7}
+.cover .sub{font:600 2.6cqw/1.25 var(--display);color:#C9C6BE;max-width:36ch}
+.cover .who{margin-top:3cqw;font:500 1.35cqw/1.6 var(--display);color:#B9B6C6}
+.cover .num,.cover .brand{color:#6C6E7C}
+.quote{font:600 4.4cqw/1.2 var(--display);letter-spacing:-.02em;color:var(--ink);max-width:24ch;margin:auto 0 1.6cqw;text-wrap:balance}
+.quote::before{content:"“";color:var(--ember)}.quote::after{content:"”";color:var(--ember)}
+html[data-l="he"] .quote::before{content:"״"}html[data-l="he"] .quote::after{content:""}
+.cite{font:500 1.3cqw/1.4 var(--display);color:var(--mute)}
+.steps{list-style:none;padding:0;margin:auto 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.1cqw;counter-reset:s}
+.steps li{border-top:2px solid var(--ink);padding-top:1.2cqw;font-size:1.3cqw;line-height:1.45}
+.steps li b{display:block;font:700 1.6cqw/1.25 var(--display);color:var(--ink);margin-bottom:.5cqw}
+.steps li::before{counter-increment:s;content:"0" counter(s);display:block;font:500 1.05cqw/1 var(--mono);color:var(--ember);margin-bottom:.8cqw}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:4cqw;margin-top:auto;align-items:end}
+.rows{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.rows li{display:flex;justify-content:space-between;gap:2cqw;padding:1cqw 0;border-bottom:1px solid var(--line);font-size:1.45cqw}
+.rows li span:last-child{font-family:var(--mono);color:var(--ember);white-space:nowrap}
+html[data-l="he"] .rows li span:last-child{font-family:"Heebo";font-weight:500}
+
+/* controls */
+.bar{height:52px;display:flex;align-items:center;gap:8px;padding:0 14px 10px;font:500 13px/1 var(--mono);color:var(--mute)}
+.bar button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;height:34px;min-width:34px;padding:0 12px;cursor:pointer}
+.bar button:hover{border-color:var(--ember)}
+.bar button:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.prog{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--ember);width:0;transition:width .3s}
+html[dir="rtl"] .flip{display:inline-block;transform:scaleX(-1)}
+.count{min-width:54px;text-align:center}
+@media (max-width:560px){.bar .hide-s{display:none}}
+@media print{
+  body{overflow:visible;display:block}.bar{display:none}.stage{padding:0;display:block}
+  .frame{width:100%;border:0;border-radius:0;aspect-ratio:auto;height:auto}
+  .slide{position:relative;display:flex!important;opacity:1;aspect-ratio:16/9;page-break-after:always;break-after:page}
+  @page{size:16in 9in;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+<div aria-live="polite" aria-roledescription="carousel" class="frame" id="frame">
+<!-- 1 cover -->
+<section class="slide cover">
+<p class="kick"><span lang="en">Final project · M.A. Learning Technologies · University of Haifa · 2022</span></p>
+<h1>PLAYGROUND</h1>
+<p class="sub"><span lang="en">Teaching teachers gamification — by letting them play.</span></p>
+<p class="who"><span lang="en">Aviram Weisberg · Guy Kaufman · Maor Cohen · Nissan Daniels<br/>Advisors: Dr. Sarit Barzilai, Dr. Ornit Sagy</span></p>
+</section>
+<!-- 2 problem -->
+<section class="slide">
+<p class="kick"><span lang="en">Context</span></p>
+<h2><span lang="en">COVID moved the classroom to a screen. <span class="g">Teachers were barely trained for it.</span></span></h2>
+<div class="grid g3">
+<div class="box"><div class="stat">20–25<em>%</em></div><p lang="en">of teachers, in Feb 2021, felt only “moderately or less” equipped to teach remotely</p></div>
+<div class="box"><div class="stat">32<em>%</em></div><p lang="en">said the professional development they received helped “moderately or less”</p></div>
+<div class="box"><b lang="en">State Comptroller of Israel, 2021</b><p lang="en">The core gap: preparing teachers to use alternative teaching tools. Band-aid solutions don’t last.</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 3 definitions -->
+<section class="slide">
+<p class="kick"><span lang="en">Terms</span></p>
+<h2><span lang="en">Game-based learning ≠ gamification</span></h2>
+<div class="grid g2">
+<div class="box"><small lang="en">GAME-BASED LEARNING</small><b lang="en">The game is the vehicle</b><p lang="en">A complete game designed to deliver and embed content, balancing subject matter, play, and the learner’s ability to apply it in the real world.</p></div>
+<div class="box"><small lang="en">GAMIFICATION</small><b lang="en">Game elements in a non-game context</b><p lang="en">Game-design techniques, game thinking and mechanics applied inside an existing process to drive adoption and change behaviour (Kapp, 2012; Deterding et al., 2011).</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 4 Nicholson -->
+<section class="slide">
+<p class="kick"><span lang="en">Framework</span></p>
+<h2><span lang="en">Meaningful gamification, not reward-based. <span class="g">Nicholson’s six principles (2014).</span></span></h2>
+<div class="grid g3">
+<div class="box"><small>01 · PLAY</small><p lang="en">Freedom to explore, try and fail within agreed boundaries.</p></div>
+<div class="box"><small>02 · EXPOSITION</small><p lang="en">A narrative that connects moments and puts the learner at the centre.</p></div>
+<div class="box"><small>03 · CHOICE</small><p lang="en">Control over path, order and mode of work — with scaffolding.</p></div>
+<div class="box"><small>04 · INFORMATION</small><p lang="en">The why and the how — not just “how many points”.</p></div>
+<div class="box"><small>05 · ENGAGEMENT</small><p lang="en">Social connection and flow: challenge that grows with skill.</p></div>
+<div class="box"><small>06 · REFLECTION</small><p lang="en">Looking back and linking the experience to real life.</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 5 design idea -->
+<section class="slide">
+<p class="kick"><span lang="en">Design idea</span></p>
+<h2><span lang="en">The course is built from the principles it teaches. <span class="g">Each principle is a level that earns a “gamification stone”.</span></span></h2>
+<div class="split">
+<p><span lang="en">The course ran inside Classcraft — a digital role-playing game for classroom management: avatars, powers, teams and a framing story. Teachers entered as players, collected six stones, and only after each level received the theory behind it.</span></p>
+<ul class="rows">
+<li><span lang="en">Play — solve a puzzle</span><span>01</span></li>
+<li><span lang="en">Exposition — search a map</span><span>02</span></li>
+<li><span lang="en">Choice — which door?</span><span>03</span></li>
+<li><span lang="en">Information — podcast, article, image</span><span>04</span></li>
+<li><span lang="en">Engagement — a group video</span><span>05</span></li>
+<li><span lang="en">Reflection — writing</span><span>06</span></li>
+</ul>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 6 sequence -->
+<section class="slide">
+<p class="kick"><span lang="en">Activity sequence</span></p>
+<h2><span lang="en">Five meetings: from playing, through principles, to the classroom.</span></h2>
+<ol class="steps">
+<li><b lang="en">Meeting games</b><span lang="en">An educational vs. a commercial game; reflection as player and observer.</span></li>
+<li><b lang="en">Principles, part 1</b><span lang="en">Entering Classcraft. Play · Exposition · Choice.</span></li>
+<li><b lang="en">Principles, part 2</b><span lang="en">Information · Engagement · Reflection. Wrap-up via Monopoly.</span></li>
+<li><b lang="en">Building a unit</b><span lang="en">Each teacher builds a lesson around one principle, then adds a second.</span></li>
+<li><b lang="en">Open day</b><span lang="en">Presenting the lessons taught in class; peer feedback.</span></li>
+</ol>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 7 field -->
+<section class="slide">
+<p class="kick"><span lang="en">Implementation · Oct 2021 – Feb 2022</span></p>
+<h2><span lang="en">A middle school in Kiryat Motzkin. <span class="g">Participation was fully voluntary.</span></span></h2>
+<div class="grid g4">
+<div class="box"><div class="stat">6</div><p lang="en">9th-grade homeroom teachers — language, science, a hearing-impaired class</p></div>
+<div class="box"><div class="stat">5</div><p lang="en">in-person meetings in the computer lab</p></div>
+<div class="box"><div class="stat">51</div><p lang="en">median age (range 37–57)</p></div>
+<div class="box"><div class="stat">17</div><p lang="en">median years of teaching (range 5–35)</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 8 method -->
+<section class="slide">
+<p class="kick"><span lang="en">Research</span></p>
+<h2><span lang="en">Four questions, four researchers.</span></h2>
+<div class="split">
+<ul class="rows">
+<li><span lang="en">How did prior digital-game experience show up?</span><span lang="en">Maor</span></li>
+<li><span lang="en">How do teachers perceive the course’s value to their role?</span><span lang="en">Aviram</span></li>
+<li><span lang="en">How did views on gamified teaching change?</span><span lang="en">Nissan</span></li>
+<li><span lang="en">How was gamification’s effect on student motivation perceived?</span><span lang="en">Guy</span></li>
+</ul>
+<div class="grid g2" style="margin:0">
+<div class="box"><b lang="en">Qualitative</b><p lang="en">Semi-structured interviews at start and end, observations at every meeting, written reflections.</p></div>
+<div class="box"><div class="stat">98<em>%</em></div><p lang="en">inter-rater agreement on coding (Chi, 1997)</p></div>
+</div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 9 findings 1-2 -->
+<section class="slide">
+<p class="kick"><span lang="en">Findings · 1–2</span></p>
+<h2><span lang="en">Prior experience set the pace — <span class="g">but everyone finished feeling successful.</span></span></h2>
+<div class="grid g2">
+<div class="box"><small lang="en">PRIOR EXPERIENCE</small><p lang="en">Teachers with digital-game experience stood out, showed self-efficacy and helped others. Those without it struggled more — mostly with platform onboarding — yet left with a basic understanding and a sense of success.</p></div>
+<div class="box"><small lang="en">VALUE OF THE COURSE</small><p lang="en">Four of six reported success and enthusiasm; two — the oldest in the group — felt overloaded. Across the board: “this will stay with me,” and above all, the principles work without technology.</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 10 findings 3-4 -->
+<section class="slide">
+<p class="kick"><span lang="en">Findings · 3–4</span></p>
+<h2><span lang="en">Views shifted for some. <span class="g">Students, teachers reported, enjoyed it more.</span></span></h2>
+<div class="grid g2">
+<div class="box"><small lang="en">CHANGE IN VIEWS</small><p lang="en">Two already used gamification; two changed their views; two veterans with 25+ years said they would not use the principles regularly.</p></div>
+<div class="box"><small lang="en">STUDENT MOTIVATION</small><p lang="en">Lessons with at least one principle were seen as more enjoyable and energetic. By the end, teachers used more gamification principles than digital tools — regardless of prior experience.</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 11 quote -->
+<section class="slide">
+<p class="kick"><span lang="en">From the field</span></p>
+<p class="quote"><span lang="en">I’ve never finished a computer game in my life — what fun!</span></p>
+<p class="cite"><span lang="en">A participant, after the third meeting. In the closing interview, another: “You didn’t force the computer on us.”</span></p>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 12 limits -->
+<section class="slide">
+<p class="kick"><span lang="en">Limits &amp; implications</span></p>
+<h2><span lang="en">A small sample, a directional finding: <span class="g">train teachers through experience, not lectures.</span></span></h2>
+<div class="grid g3">
+<div class="box"><b lang="en">Only six participants</b><p lang="en">Not generalisable. On the other hand, facilitators were fully available.</p></div>
+<div class="box"><b lang="en">No credit or reward</b><p lang="en">On their own time; content was sometimes shortened. Commitment held.</p></div>
+<div class="box"><b lang="en">Proximity to a researcher</b><p lang="en">One facilitator coordinated the participants’ grade level.</p></div>
+</div>
+<span class="brand">PLAYGROUND</span><span class="num"></span>
+</section>
+<!-- 13 close -->
+<section class="slide cover">
+<p class="kick"><span lang="en">Thank you</span></p>
+<h1 style="font-size:7cqw">PLAYGROUND</h1>
+<p class="sub"><span lang="en">Aviram Weisberg · Guy Kaufman · Maor Cohen · Nissan Daniels</span></p>
+<p class="who"><span lang="en">Dept. of Learning, Instruction &amp; Teacher Education · Faculty of Education · University of Haifa · July 2022</span></p>
+</section>
+</div>
+</div>
+<div aria-label="Slides" class="bar" role="toolbar">
+<button aria-label="Previous" id="prev"><span class="flip">→</span></button>
+<span class="count" dir="ltr" id="count">1 / 1</span>
+<button aria-label="Next" id="next"><span class="flip">←</span></button>
+<div aria-hidden="true" class="prog"><i id="prog"></i></div>
+
+<button aria-label="Fullscreen" id="fs">⤢</button>
+</div>
+<script>
+(function(){
+  var H=document.documentElement, S=[].slice.call(document.querySelectorAll('.slide')), i=0;
+  var q=new URLSearchParams(location.search), l=q.get('lang');
+  function setLang(x){H.dataset.l=x;H.lang=x;H.dir=x==='he'?'rtl':'ltr';
+    document.getElementById('prev').firstChild.textContent=x==='he'?'→':'←';document.getElementById('next').firstChild.textContent=x==='he'?'←':'→';}
+  setLang('en');
+  S.forEach(function(s,k){var n=s.querySelector('.num');if(n)n.textContent='\u2066'+String(k+1).padStart(2,'0')+' / '+String(S.length).padStart(2,'0')+'\u2069';});
+  function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i);s.setAttribute('aria-hidden',k!==i);});
+    document.getElementById('count').textContent=(i+1)+' / '+S.length;document.getElementById('prog').style.width=((i+1)/S.length*100)+'%';
+    try{history.replaceState(null,'','#'+(i+1));}catch(e){}}
+  var h=parseInt((location.hash||'').slice(1),10);go(h?h-1:0);
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.getElementById('next').onclick=function(){go(i+1)};
+  
+  document.getElementById('fs').onclick=function(){var f=document.fullscreenElement;if(f)document.exitFullscreen();else (document.documentElement.requestFullscreen||function(){}).call(document.documentElement)};
+  document.addEventListener('keydown',function(e){var rtl=H.dir==='rtl';
+    if(e.key==='ArrowRight')go(rtl?i-1:i+1);else if(e.key==='ArrowLeft')go(rtl?i+1:i-1);
+    else if(e.key===' '||e.key==='PageDown')go(i+1);else if(e.key==='PageUp')go(i-1);
+    else if(e.key==='Home')go(0);else if(e.key==='End')go(S.length-1);});
+  var x0=null;document.getElementById('frame').addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.getElementById('frame').addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40){var fwd=H.dir==='rtl'?d>0:d<0;go(fwd?i+1:i-1)}x0=null});
+  window.addEventListener('message',function(e){if(e.data&&e.data.playgroundLang)setLang(e.data.playgroundLang==='en'?'en':'he')});
+})();
+</script>
+</body>
+</html>
