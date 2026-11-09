@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who builds the future? A synthesis - Aviram Weisberg</title>
+<meta name="description" content="A structured synthesis of a year of research on AI, work and technology education, with a focus on Israel's education system. It maps the field and raises the questions. It does not answer them.">
+<meta property="og:title" content="Who builds the future? A synthesis">
+<meta property="og:description" content="Three axes, an Israeli lens, three ways to frame the question, and a game you can play yourself.">
+<link rel="stylesheet" href="/static/fonts.css">
+<link rel="stylesheet" href="/static/main.css">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<style>
+:root{--paper:#F6EFE7;--sand:#EFE7DB;--lilac-soft:#ECE8F5;--sky:#E3F4FB;--card:#FFFCF7;--ink:#171B2B;--ink-2:#3A3F52;--mute:#62647A;--line:#E5DED2;--line-2:#CFC8B8;--ember:#244CFF;--ember-ink:#1B39C7;--ember-soft:#E6EBFF;--apricot:#F4AC78;--apricot-soft:#FCE6D6;--lilac:#DDD7EE;--red:#C8102E;--navy:#062F6A;
+--serif:"Newsreader","Frank Ruhl",Georgia,serif;--sans:"Inter","Heebo",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--w:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.75 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+main a{color:var(--ember-ink);text-underline-offset:3px;text-decoration-thickness:1px}a:hover{color:var(--ink)}
+::selection{background:var(--ember);color:#fff}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 20px}
+.top{position:sticky}.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--ember)}
+.col{max-width:780px;margin:0 auto;padding:0 20px}
+.wide{max-width:1080px;margin:0 auto;padding:0 20px}
+.syn-back{display:inline-block;margin-top:44px;font:400 14px var(--sans);color:var(--mute);text-decoration:none}
+
+/* hero */
+.syn-hero{padding-bottom:40px}
+.kicker{margin:36px 0 12px;font:500 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+h1{font:400 clamp(48px,7vw,86px)/1.02 var(--serif);margin:0 0 24px;letter-spacing:-.015em}
+h1 em{font-style:italic;color:var(--ember)}
+.lede{font:400 22px/1.5 var(--serif);color:var(--ink-2);margin:0 0 30px;max-width:660px}
+.credit{display:flex;align-items:center;gap:18px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0;margin:0 0 26px}
+.credit img{height:46px;width:auto;flex:none}
+.credit p{margin:0;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.credit b{font-weight:600;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line-2)}
+.stat{padding:16px 18px 18px 0;border-right:1px solid var(--line-2);padding-left:16px}.stat:first-child{padding-left:0}.stat:last-child{border-right:0}
+.stat b{display:block;font:400 40px/1 var(--serif);color:var(--ember)}
+.stat span{font-size:13px;color:var(--mute);line-height:1.4;display:block;margin-top:6px}
+
+
+/* listen */
+.listen{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;background:var(--ink);color:#fff;border-radius:18px;padding:18px 20px;margin:0 0 22px}
+.lp-btn{width:56px;height:56px;border-radius:50%;border:0;background:var(--ember);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center;transition:transform .15s,background .15s}
+.lp-btn:hover{transform:scale(1.05);background:#4D6BFF}
+.lp-k{font:500 11px var(--mono);letter-spacing:.1em;color:#85D9FF}
+.lp-t{font:400 19px/1.3 var(--serif);margin:2px 0 8px}
+.lp-bar{position:relative;height:6px;border-radius:3px;background:rgba(255,255,255,.18);cursor:pointer}
+.lp-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:3px;background:#85D9FF}
+.lp-marks i{position:absolute;top:-3px;width:2px;height:12px;background:rgba(255,255,255,.45)}
+.lp-meta{display:flex;justify-content:space-between;gap:10px;font:400 12.5px var(--mono);color:#B9C3D8;margin-top:8px;flex-wrap:wrap}
+.lp-meta button{background:none;border:0;color:#85D9FF;font:inherit;cursor:pointer;padding:0}
+.lp-panel{display:none;grid-column:1/-1;border-top:1px solid rgba(255,255,255,.14);padding-top:14px;margin-top:4px}
+.lp-panel.on{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.lp-ch{list-style:none;padding:0;margin:0;font-size:13.5px}
+.lp-ch li{padding:5px 0;cursor:pointer;color:#C9CDE0}.lp-ch li.on{color:#fff;font-weight:600}.lp-ch li span{font:400 11.5px var(--mono);color:#8A93AE;margin-right:8px}
+.lp-tx{max-height:260px;overflow:auto;font-size:14px;line-height:1.6;padding-right:8px}
+.lp-tx p{margin:0 0 10px;color:#9AA6C0;cursor:pointer}.lp-tx p.on{color:#fff}.lp-tx b{font:500 11px var(--mono);letter-spacing:.06em;margin-right:6px}
+.lp-tx p[data-s="H"] b{color:#F4AC78}.lp-tx p[data-s="G"] b{color:#85D9FF}
+@media (max-width:700px){.lp-panel.on{grid-template-columns:1fr}}
+
+/* banner */
+.banner{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:10px;align-items:center;background:linear-gradient(120deg,var(--ember-soft) 0%,var(--paper) 48%,var(--apricot-soft) 100%);border:0;border-radius:26px;padding:34px 30px 30px 40px;margin:14px 0 34px;overflow:hidden}
+.banner::after{content:"";position:absolute;left:-120px;bottom:-160px;width:360px;height:360px;border-radius:50%;background:radial-gradient(closest-side,rgba(36,76,255,.10),transparent)}
+.banner .kicker{margin:0 0 14px}
+.banner h1{margin:0 0 18px}
+.bn-sub{font:400 19px/1.5 var(--serif);color:var(--ink-2);margin:0;max-width:440px}
+.bn-art{width:100%;height:auto;display:block}
+.bn-art text{font-family:var(--serif);font-size:19px;fill:var(--ink)}
+.bn-art .bn-cap{font:400 11px var(--mono);fill:var(--mute);letter-spacing:.04em}
+.bn-art .bn-q{font:italic 400 64px var(--serif);fill:#fff}
+.bn-bars .b{fill:var(--ember);transform-box:fill-box;transform-origin:left center;animation:bnGrow 7s cubic-bezier(.2,.7,.2,1) infinite}
+.bn-bars .b1{opacity:.45}.bn-bars .b2{opacity:.6;animation-delay:.5s}.bn-bars .b3{opacity:.78;animation-delay:1s}.bn-bars .b4{animation-delay:1.5s}
+@keyframes bnGrow{0%{transform:scaleX(0)}14%,80%{transform:scaleX(1)}92%,100%{transform:scaleX(0)}}
+.bn-tri .ln{stroke-dasharray:260;stroke-dashoffset:260;animation:bnDraw 7s ease-in-out infinite}
+.bn-tri .l2{animation-delay:.4s}.bn-tri .l3{animation-delay:.8s}
+@keyframes bnDraw{0%{stroke-dashoffset:260}22%,82%{stroke-dashoffset:0}100%{stroke-dashoffset:-260}}
+.bn-node{animation:bnFloat 6s ease-in-out infinite}.bn-node.n2{animation-delay:-2s}.bn-node.n3{animation-delay:-4s}
+@keyframes bnFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.bn-ring{transform-box:fill-box;transform-origin:center;animation:bnPulse 3.2s ease-out infinite}.bn-ring.r2{animation-delay:1.6s}
+@keyframes bnPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.bn-dot{offset-rotate:0deg;animation:bnOrbit 9s linear infinite}
+.bn-dot.d1{offset-path:path("M292 96 L150 300 L420 318 Z")}.bn-dot.d2{offset-path:path("M150 300 L420 318 L332 96 Z");animation-delay:-3s}.bn-dot.d3{offset-path:path("M420 318 L292 96 L150 300 Z");animation-delay:-6s}
+@keyframes bnOrbit{from{offset-distance:0%}to{offset-distance:100%}}
+@media (prefers-reduced-motion:reduce){.banner *{animation:none!important}.bn-bars .b{transform:none}.bn-tri .ln{stroke-dashoffset:0}.bn-dot{display:none}}
+@media (max-width:900px){.banner{grid-template-columns:1fr;padding:26px 22px}.bn-art{max-width:460px;margin:0 auto}}
+
+.cite{font:600 10.5px var(--sans);line-height:0;margin-left:1px}
+.cite a{text-decoration:none;color:var(--ember);padding:0 1px}.cite a:hover{background:var(--ember);color:#fff;border-radius:3px}
+td.src a,figcaption a{color:inherit;text-decoration:underline;text-decoration-color:var(--line-2)}td.src a:hover,figcaption a:hover{color:var(--ember-ink)}
+.roadmap{border-left:3px solid var(--ember);padding:4px 0 4px 20px;margin:26px 0 0}
+.roadmap p{font-size:16px;color:var(--ink-2);margin:0 0 12px}.roadmap b{color:var(--ink)}
+.bridge{margin:44px 0 0;padding:18px 20px 18px 20px;background:var(--ink);color:#E4E7F1;border-radius:16px;font:400 18px/1.55 var(--serif)}
+.bridge span{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#85D9FF;margin-bottom:6px}
+.bridge span::after{content:" →"}
+.refbox{border-top:2px solid var(--ink);border-bottom:1px solid var(--line-2);margin:18px 0 0}
+.refbox summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font:500 15px var(--sans)}
+.refbox summary::-webkit-details-marker{display:none}
+.refbox summary i{font-style:normal;transition:transform .2s}.refbox[open] summary i{transform:rotate(180deg)}
+.refbox summary:hover span{color:var(--ember-ink)}
+.reflist{margin:4px 0 20px;padding-left:30px;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.reflist li{margin-bottom:10px;padding-left:4px;scroll-margin-top:100px}.reflist li::marker{font:500 12px var(--mono);color:var(--ember)}
+.reflist li a{word-break:break-all;color:var(--ember-ink)}
+.reflist li:target{background:var(--ember-soft);border-radius:6px;outline:6px solid var(--ember-soft)}
+.doors{margin:30px 0 6px}.doors img{width:100%;height:auto;display:block;border:2px solid var(--ink);border-radius:8px;box-shadow:5px 5px 0 var(--ink);background:var(--sand)}.doors figcaption{font-size:13px;color:var(--mute);margin-top:12px}
+@media (min-width:901px) and (max-width:1300px){.comic{grid-template-columns:repeat(3,1fr)}}
+/* page map */
+.map{margin:56px auto 10px}
+.map-h{font:500 12px var(--mono);letter-spacing:.08em;color:var(--ember);margin:0 0 14px}
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;counter-reset:f}
+.flow a{position:relative;display:block;padding:14px 14px 16px;text-decoration:none;color:var(--ink);background:var(--sand);border:1px solid var(--line-2);margin-left:-1px;transition:background .2s,transform .2s}
+.flow a:first-child{border-radius:12px 0 0 12px;margin-left:0}.flow a:last-child{border-radius:0 12px 12px 0;background:var(--ink);color:#fff;border-color:var(--ink)}
+.flow a:hover{background:var(--ember-soft);transform:translateY(-2px)}.flow a:last-child:hover{background:var(--ember);border-color:var(--ember)}
+.flow a::after{content:"";position:absolute;right:-7px;top:50%;width:12px;height:12px;background:inherit;border-top:1px solid var(--line-2);border-right:1px solid var(--line-2);transform:translateY(-50%) rotate(45deg);z-index:1}
+.flow a:last-child::after{display:none}
+.flow .fk{font:500 11px var(--mono);color:var(--ember);display:block;margin-bottom:6px;letter-spacing:.06em}.flow a:last-child .fk{color:#85D9FF}
+.flow .ft{font:500 16px/1.25 var(--serif);display:block}
+.flow .fs{font-size:12.5px;line-height:1.4;color:var(--mute);display:block;margin-top:6px}.flow a:last-child .fs{color:#C9CDE0}
+.map-note{font-size:14px;color:var(--mute);margin:12px 0 0}
+
+/* side toc */
+.syn-toc{position:fixed;left:24px;top:96px;width:176px;font-size:13px;display:none;z-index:5;max-height:calc(100vh - 120px);overflow:auto;transition:top .45s cubic-bezier(.2,.7,.2,1);scrollbar-width:thin}
+.syn-toc a{display:block;color:var(--mute);text-decoration:none;padding:5px 0 5px 14px;border-left:2px solid var(--line);line-height:1.35;transition:color .2s,border-color .2s}.syn-toc a:hover{color:var(--ink)}
+.syn-toc a b{font:500 11px var(--mono);color:var(--ember);margin-right:6px}.syn-toc a.on{color:var(--ink);border-left-color:var(--ember);font-weight:500}
+.syn-toc .tk{font:500 11px var(--mono);letter-spacing:.08em;color:var(--mute);margin:0 0 8px 14px}
+@media (min-width:1180px){.syn-toc{display:block}main,.foot{padding-left:200px}}
+@media (min-width:1700px){.syn-toc{left:calc((100vw - 1080px)/2 - 230px)}main,.foot{padding-left:0}}
+
+/* headings */
+h2{font:400 clamp(32px,4vw,42px)/1.15 var(--serif);margin:96px 0 16px;letter-spacing:-.005em}
+h2 .syn-n{font:500 12.5px var(--mono);color:var(--ember);display:block;letter-spacing:.1em;margin-bottom:10px}
+h3{font:600 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:44px 0 12px}
+p{margin:0 0 18px}
+.lead2{font:400 20px/1.55 var(--serif);color:var(--ink-2)}
+.chapter{border-top:1px solid var(--line-2);margin-top:96px}
+.chapter>.col>h2:first-child,.chapter>.wide>h2:first-child{margin-top:56px}
+
+/* axis cards */
+.axes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 10px}
+.axis{background:var(--sand);border:0;border-radius:18px;padding:24px 22px;text-decoration:none;color:var(--ink);display:block;transition:transform .2s,box-shadow .2s}
+.axes .axis:nth-child(1){background:var(--lilac-soft)}.axes .axis:nth-child(2){background:var(--ember-soft)}.axes .axis:nth-child(3){background:var(--apricot-soft)}
+.axis:hover{transform:translateY(-3px);box-shadow:0 12px 30px -18px rgba(23,27,43,.4)}
+.axis .num{font:500 12px var(--mono);color:var(--ember)}
+.axis h4{font:500 23px/1.2 var(--serif);margin:8px 0 10px}
+.axis p{font-size:15px;line-height:1.6;color:var(--ink-2);margin:0 0 12px}
+.axis .q{font:italic 400 16px/1.45 var(--serif);color:var(--ink);border-top:1px dashed rgba(23,27,43,.25);padding-top:12px;margin:0}
+
+/* signals */
+.signals{width:100%;border-collapse:collapse;margin:14px 0 8px;font-size:15px;line-height:1.55}
+.signals th{text-align:left;font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--ink);padding:8px 10px 8px 0}
+.signals td{border-bottom:1px solid var(--line);padding:13px 12px 13px 0;vertical-align:top}
+.signals tr{transition:background .15s}.signals tbody tr:hover{background:rgba(36,76,255,.05)}
+.signals td.big{font:400 24px/1.15 var(--serif);white-space:nowrap;width:128px;color:var(--ink)}
+.signals td.src{color:var(--mute);font-size:12.5px;width:170px;line-height:1.45}
+
+/* figures */
+figure.viz{margin:34px 0 34px;background:transparent;border:0;border-top:2px solid var(--ink);padding:16px 0 0}
+figure.viz svg{display:block;width:100%;height:auto}
+figure.viz figcaption{font-size:13px;line-height:1.55;color:var(--mute);margin-top:12px;border-top:1px solid var(--line-2);padding-top:10px}
+figure.viz figcaption b{color:var(--ink);font-weight:600}
+.fig-k{font:500 11px var(--mono);letter-spacing:.08em;color:var(--ember);margin:0 0 4px}
+.fig-t{font:500 20px/1.3 var(--serif);margin:0 0 14px}
+
+.not{background:var(--apricot-soft);border-left:3px solid var(--apricot);padding:16px 20px;margin:24px 0;font-size:15px;border-radius:0 12px 12px 0}
+.not b{font-weight:600}
+.callout{background:var(--ink);color:#E9EAF2;border-radius:16px;padding:24px 26px;margin:30px 0}
+.callout-k{display:inline-block;font:500 11px var(--mono);letter-spacing:.08em;color:var(--ink);background:var(--apricot);padding:3px 9px;border-radius:99px;margin-bottom:12px}
+.callout p{margin:0;font:400 18px/1.6 var(--serif)}.callout em{color:#fff}
+
+.qs{list-style:none;padding:0;margin:8px 0 0;counter-reset:q}
+.qs li{counter-increment:q;position:relative;padding:14px 0 14px 48px;border-bottom:1px solid var(--line);font:400 19px/1.45 var(--serif)}
+.qs li::before{content:"Q" counter(q);position:absolute;left:0;top:18px;font:500 12px var(--mono);color:var(--ember)}
+
+/* discussion windows */
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 0}
+.qcard{background:var(--sand);border:0;border-top:3px solid var(--ember);border-radius:4px 4px 16px 16px;padding:20px;position:relative}
+.qgrid .qcard:nth-child(2){border-top-color:var(--apricot)}.qgrid .qcard:nth-child(3){border-top-color:#8C7CC9}.qgrid .qcard:nth-child(4){border-top-color:var(--ink)}.qgrid .qcard:nth-child(5){border-top-color:#2FA7D8}.qgrid .qcard:nth-child(6){border-top-color:var(--red)}
+.qcard .qk{font:500 11px var(--mono);letter-spacing:.08em;color:var(--ember);margin-bottom:8px;display:flex;justify-content:space-between}
+.qcard .qk i{font-style:normal;color:var(--mute)}
+.qcard h4{font:500 19px/1.3 var(--serif);margin:0 0 8px}
+.qcard p{font-size:14.5px;line-height:1.6;margin:0;color:var(--ink-2)}
+
+/* framings */
+.answers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 10px}
+.ans{background:var(--t);border:0;border-radius:20px;padding:26px 24px}
+.ans:nth-child(1){--t:var(--lilac-soft)}.ans:nth-child(2){--t:var(--ember-soft)}.ans:nth-child(3){--t:var(--apricot-soft)}
+.ans-k{font:500 11px var(--mono);letter-spacing:.08em;color:var(--mute)}
+.ans h4{font:400 26px/1.15 var(--serif);margin:8px 0 10px}.ans h4 em{color:var(--ember)}
+.ans-d{font-size:15px;line-height:1.6;color:var(--ink-2);margin:0 0 14px}
+.ans .bq{font:italic 400 18px/1.45 var(--serif);border-left:3px solid var(--ink);padding:2px 0 2px 14px;margin:0 0 14px}
+.ans dl{margin:0;font-size:14px;line-height:1.55}
+.ans dt{font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:12px}
+.ans dd{margin:3px 0 0;color:var(--ink-2)}
+.tablewrap{overflow-x:auto;margin:14px 0}
+.cmp{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.5;min-width:620px}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid var(--line)}
+.cmp thead th{font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid var(--ink)}
+.cmp tbody th{font:500 15px var(--serif);width:170px;color:var(--ink)}
+.cmp td{color:var(--ink-2)}
+.layers{margin:26px 0 10px;border-radius:16px;overflow:hidden;border:1px solid var(--ink)}
+.layer{display:flex;gap:18px;align-items:center;padding:16px 20px;font-size:15px}
+.layer .lk{font:500 11px var(--mono);letter-spacing:.08em;min-width:200px}
+.layer.vol{background:repeating-linear-gradient(-45deg,#EFE7DB 0 10px,#E8DFD1 10px 20px);color:var(--ink-2)}
+.layer.vol .lk{color:var(--ember)}
+.layer.stab{background:var(--ink);color:#fff;padding:26px 20px}.layer.stab .lk{color:var(--apricot)}
+
+/* kit */
+.kit{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.step{border-top:2px solid var(--ink);padding-top:14px}
+.step b{font:500 12px var(--mono);color:var(--ember);letter-spacing:.06em}
+.step h4{font:500 20px/1.3 var(--serif);margin:6px 0 8px}
+.step p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0}
+
+/* game */
+.game{background:var(--navy);color:#fff;border-radius:22px;padding:34px;margin:28px 0;position:relative;overflow:hidden}
+.game::before{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;border:44px solid rgba(133,217,255,.14)}
+.game-k{font:500 11px var(--mono);letter-spacing:.1em;color:#85D9FF}
+.game h3{font:400 38px/1.1 var(--serif);color:#fff;text-transform:none;letter-spacing:0;margin:10px 0 12px}
+.game p{color:#D6DCEA;max-width:600px;font-size:16px}
+.game-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 24px;position:relative}
+.gcell{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px}
+.gcell b{display:block;font:400 26px/1 var(--serif);color:#fff}.gcell span{font-size:12.5px;color:#B9C3D8;line-height:1.4;display:block;margin-top:6px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;position:relative}
+.syn-btn{display:inline-flex;align-items:center;gap:8px;font:500 15px var(--sans);text-decoration:none;padding:12px 20px;border-radius:99px;border:1px solid rgba(255,255,255,.4);color:#fff;background:transparent;cursor:pointer}
+.syn-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.syn-btn.primary{background:#85D9FF;border-color:#85D9FF;color:var(--navy)}.syn-btn.primary:hover{background:#fff;border-color:#fff;color:var(--navy)}
+.game-frame{display:none;margin-top:22px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:#0B0F1A;position:relative;aspect-ratio:1440/900;width:100%}
+.game-frame.on{display:block}.game-frame iframe{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;display:block;transform-origin:0 0}
+.game small{display:block;color:#9AA6C0;margin-top:14px;font-size:12.5px;position:relative}
+
+/* comic */
+.comic{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:26px 0 10px}
+.panel{background:var(--sand);border:2px solid var(--ink);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;box-shadow:4px 4px 0 var(--ink);transition:transform .2s,box-shadow .2s}
+.panel:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.panel svg,.panel img{display:block;width:100%;height:auto;background:#FFFCF7;aspect-ratio:300/220;object-fit:cover}
+.cap{border-top:2px solid var(--ink);padding:10px 12px 12px;font:500 14px/1.4 var(--sans);background:var(--sand);flex:1}
+.cap small{display:block;font:400 11.5px/1.4 var(--sans);color:var(--mute);margin-top:4px}
+.pn{font:600 11px var(--mono);color:var(--ember);letter-spacing:.06em}
+
+.talk{margin:22px 0 0;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;background:var(--navy);aspect-ratio:16/9}
+.talk iframe{width:100%;height:100%;border:0;display:block}
+.small{font-size:14px;color:var(--mute)}
+.harari{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:start;background:var(--sand);border:0;border-radius:20px;padding:24px;margin:22px 0}
+.h-img img{width:100%;height:auto;border:2px solid var(--ink);border-radius:6px;box-shadow:4px 4px 0 var(--ink);display:block}
+.harari p{font-size:15.5px;color:var(--ink-2)}
+.h-links{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 14px}
+.h-sum{margin:0 0 16px;padding-left:20px;font-size:15.5px;line-height:1.6;color:var(--ink-2)}.h-sum li{margin-bottom:8px}.h-sum b{color:var(--ink)}
+.btn-l{display:inline-block;font:500 14.5px var(--sans);text-decoration:none;padding:10px 16px;border-radius:99px;background:var(--ink);color:#fff}.btn-l:hover{background:var(--ember);color:#fff}
+.btn-l.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2)}.btn-l.ghost:hover{border-color:var(--ink);color:var(--ink);background:transparent}
+@media (max-width:900px){.harari{grid-template-columns:1fr}.h-img{max-width:280px}}
+.org{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;background:var(--sky);border:0;border-radius:20px;padding:26px;margin:24px 0}
+.org img{width:100%;height:auto}
+.org p{margin:0 0 10px;font-size:15.5px;color:var(--ink-2)}.org p:last-child{margin:0}
+.refs{font-size:13.5px;line-height:1.6;color:var(--ink-2);padding:0;list-style:none;columns:2;column-gap:36px}
+.refs li{margin-bottom:9px;break-inside:avoid;padding-left:14px;position:relative}.refs li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--line-2)}
+.refs-h{font:600 11.5px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:26px 0 10px}
+.totop{position:fixed;right:20px;bottom:20px;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;text-decoration:none;font-size:18px;opacity:0;pointer-events:none;transition:opacity .3s;z-index:15}
+.totop.on{opacity:1;pointer-events:auto}.totop:hover{background:var(--ember);color:#fff}
+
+.rv{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{transition:none!important}}
+@media (max-width:980px){.flow{grid-template-columns:repeat(3,1fr);row-gap:10px}.flow a,.flow a:first-child,.flow a:last-child{border-radius:12px;margin-left:0}.flow a::after{display:none}.flow{gap:10px}}
+@media (max-width:900px){.axes,.qgrid,.answers,.kit{grid-template-columns:1fr}.comic{grid-template-columns:repeat(2,1fr)}.nav{gap:16px}.signals td.src{display:none}.stats{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.game-grid{grid-template-columns:repeat(2,1fr)}.org{grid-template-columns:1fr}.org img{max-width:220px}.refs{columns:1}.layer{flex-direction:column;align-items:flex-start;gap:6px}}
+@media (max-width:520px){.comic{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.credit{flex-direction:column;align-items:flex-start}.game{padding:24px}}
+@media print{.top,.syn-toc,.totop,.game .btns,.game-frame,.talk,.progress{display:none!important}body{background:#fff;font-size:12pt}.rv{opacity:1;transform:none}figure.viz,.ans,.qcard,.panel{break-inside:avoid}a{color:inherit}}
+
+.top .nav a{color:var(--ink)}.top .nav .nav-cta{color:var(--ember)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<span class="top-sentinel" aria-hidden="true"></span>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Aviram Weisberg">
+      <span class="brand-name">Aviram Weisberg</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/work/">Work</a>
+      <a href="/lab/" aria-current="page">Perspectives</a>
+      <a href="/about/">About</a>
+      <a class="nav-cta" href="https://calendar.app.google/bDE77A7Af282fTHZ9" data-book rel="noopener">Let’s talk</a>
+    </nav>
+  </div>
+<div class="progress" id="progress"></div></header>
+
+<nav class="syn-toc" aria-label="On this page">
+  <div class="tk">ON THIS PAGE</div>
+  <a href="#map">The map</a><a href="#axis1"><b>1</b> Professions</a><a href="#axis2"><b>2</b> Pace and radius</a><a href="#axis3"><b>3</b> Meaningful skills</a><a href="#israel"><b>4</b> The Israeli lens</a><a href="#windows"><b>5</b> Discussion windows</a><a href="#framings"><b>6</b> Three framings</a><a href="#meet">Where it meets</a><a href="#comic">The comic</a><a href="#play">Play it yourself</a><a href="#harari">Addendum: Harari</a><a href="#about">About this work</a><a href="#refs">References</a>
+</nav>
+
+<main id="main">
+<div class="wide"><a class="syn-back" href="/lab/">← Perspectives</a></div>
+<div class="wide"><section class="banner" aria-label="Who builds the future?">
+  <div class="bn-text">
+    <div class="kicker">Synthesis · November 2026</div>
+    <h1>Who builds the <em>future?</em></h1>
+    <p class="bn-sub">AI, work and technology education.<br>A map of the evidence, and the questions it leaves open.</p>
+  </div>
+  <svg class="bn-art" viewBox="0 0 540 380" role="img" aria-label="Animated illustration: task bars doubling in length, three axes connected in a triangle around a pulsing question mark">
+    <defs><pattern id="bn-dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#CFC8B8"/></pattern></defs>
+    <rect width="540" height="380" fill="url(#bn-dots)" opacity=".7"/>
+    <g class="bn-bars">
+      <rect class="b b1" x="28" y="34" width="22" height="12" rx="3"/><rect class="b b2" x="28" y="54" width="44" height="12" rx="3"/>
+      <rect class="b b3" x="28" y="74" width="88" height="12" rx="3"/><rect class="b b4" x="28" y="94" width="176" height="12" rx="3"/>
+      <text x="28" y="128" class="bn-cap">task length an AI finishes alone · doubling</text>
+    </g>
+    <g class="bn-tri" fill="none" stroke="#171B2B" stroke-width="1.6">
+      <path class="ln l1" d="M292 96 L150 300"/><path class="ln l2" d="M332 96 L460 300"/><path class="ln l3" d="M190 318 H420"/>
+    </g>
+    <g class="bn-node n1"><rect x="244" y="62" width="136" height="38" rx="19" fill="#E3F4FB" stroke="#171B2B" stroke-width="1.5"/><text x="312" y="86" text-anchor="middle">Pace</text></g>
+    <g class="bn-node n2"><rect x="70" y="300" width="150" height="38" rx="19" fill="#DDD7EE" stroke="#171B2B" stroke-width="1.5"/><text x="145" y="324" text-anchor="middle">Professions</text></g>
+    <g class="bn-node n3"><rect x="390" y="300" width="130" height="38" rx="19" fill="#F4AC78" stroke="#171B2B" stroke-width="1.5"/><text x="455" y="324" text-anchor="middle">Skills</text></g>
+    <circle class="bn-ring" cx="312" cy="220" r="44" fill="none" stroke="#244CFF" stroke-width="2"/>
+    <circle class="bn-ring r2" cx="312" cy="220" r="44" fill="none" stroke="#244CFF" stroke-width="2"/>
+    <circle cx="312" cy="220" r="44" fill="#244CFF"/>
+    <text class="bn-q" x="312" y="242" text-anchor="middle">?</text>
+    <g class="bn-dot d1"><circle r="5" fill="#244CFF"/></g><g class="bn-dot d2"><circle r="5" fill="#F4AC78"/></g><g class="bn-dot d3"><circle r="5" fill="#171B2B"/></g>
+  </svg>
+</section></div>
+<div class="col syn-hero">
+  <p class="lede">What should a sixteen-year-old learn today, when the tools change every few months? We spent a year reading about AI, work and technology education to sit with that question properly. This page shares what we found, where Israel stands, and the questions we are still arguing about. It won’t hand you answers. It should help you ask better ones.</p>
+  <div class="credit"><img src="bu-logo.png" alt="BU. Be the Future You. By BeNetivei Udi" width="96" height="46"><p>Research and synthesis by <b>Aviram Weisberg</b>, developed at <b>Be’Netivei Udi (BU)</b> for a strategic discussion on the future of youth technology education in Israel.</p></div>
+  <div class="listen" id="listen">
+    <button class="lp-btn" id="lp-btn" type="button" aria-label="Play the audio version">▶</button>
+    <div>
+      <div class="lp-k">LISTEN · AUDIO VERSION</div>
+      <div class="lp-t">The synthesis as a two-voice conversation</div>
+      <div class="lp-bar" id="lp-bar"><div class="lp-fill" id="lp-fill"></div><div class="lp-marks" id="lp-marks"></div></div>
+      <div class="lp-meta"><span id="lp-time">0:00 / —</span><span id="lp-ch">Opening</span><button type="button" id="lp-more">Chapters &amp; transcript ▾</button></div>
+    </div>
+    <div class="lp-panel" id="lp-panel"><ul class="lp-ch" id="lp-chs"></ul><div class="lp-tx" id="lp-tx"></div></div>
+    <audio id="lp-audio" src="podcast/who-builds-the-future.mp3" preload="metadata"></audio>
+  </div>
+  <div class="stats rv">
+    <div class="stat"><b>~190</b><span>sources read and sorted</span></div>
+    <div class="stat"><b>3</b><span>axes that organise them</span></div>
+    <div class="stat"><b>6</b><span>discussion windows from the room</span></div>
+    <div class="stat"><b>0</b><span>recommendations, on purpose</span></div>
+  </div>
+</div>
+
+<div class="wide map" id="map">
+  <p class="map-h">THE STRUCTURE OF THIS PAGE · FROM EVIDENCE TO QUESTIONS</p>
+  <div class="flow rv">
+    <a href="#refs"><span class="fk">01</span><span class="ft">Sources</span><span class="fs">Research, data, reporting</span></a>
+    <a href="#axes"><span class="fk">02</span><span class="ft">Three axes</span><span class="fs">What the signals say</span></a>
+    <a href="#israel"><span class="fk">03</span><span class="ft">Israeli lens</span><span class="fs">What the system decided</span></a>
+    <a href="#windows"><span class="fk">04</span><span class="ft">Windows</span><span class="fs">What the room argued</span></a>
+    <a href="#framings"><span class="fk">05</span><span class="ft">Framings</span><span class="fs">Three ways to ask it</span></a>
+    <a href="#play"><span class="fk">06</span><span class="ft">Try it</span><span class="fs">A 12-minute game</span></a>
+  </div>
+  <p class="map-note">Start anywhere. Each layer builds on the one before, from what the evidence says to what it leaves open. One honest warning: every number here is a snapshot, and forecasts in this field have missed in both directions.</p>
+</div>
+
+<div class="col" id="axes">
+  <h2><span class="syn-n">IN ONE MINUTE</span>Three axes, one picture</h2>
+  <p>Almost everything we read lands on one of three axes. They pull on each other: faster tools reshape jobs, and both nudge education back toward skills that outlive any tool. Each axis ends where the real conversation starts, with a question.</p>
+  <div class="roadmap">
+    <p><b>How this synthesis is organised.</b> We proceed in five movements. <a href="#axis1">Section 1</a> asks what is happening to the first rung of technical work. <a href="#axis2">Section 2</a> asks how fast the tools are changing, and why that speed matters more for a curriculum than any single capability. <a href="#axis3">Section 3</a> turns from labour markets to learning itself. <a href="#israel">Section 4</a> reads Israel’s recent education decisions against that picture, and <a href="#windows">Sections 5</a> and <a href="#framings">6</a> bring it back to the room: the tensions we argued about, and the three ways the underlying question can be framed.</p>
+    <p>Throughout, we try to keep three kinds of statements apart: what was <i>measured</i> (controlled studies, large datasets), what was <i>reported</i> (companies, surveys, journalism), and what we <i>interpret</i>. Numbered references link to the full source list at the end of the page.</p>
+  </div>
+</div>
+<div class="wide"><div class="axes rv">
+  <a class="axis" href="#axis1"><div class="num">AXIS 1</div><h4>Professions are shifting</h4><p>The entry door into software work is narrowing for the youngest, while demand moves toward people who can direct, check and own what AI produces.</p><p class="q">What does “ready for a first job” mean in 2028?</p></a>
+  <a class="axis" href="#axis2"><div class="num">AXIS 2</div><h4>Pace and radius of change</h4><p>Tool capability doubles in months, cost falls by orders of magnitude, and effects spread faster than rules or measurement can follow.</p><p class="q">What is stable enough to teach?</p></a>
+  <a class="axis" href="#axis3"><div class="num">AXIS 3</div><h4>The return to meaningful skills</h4><p>Where learning was measured, design beats the model. Schools and employers are bringing learning and assessment back into the room.</p><p class="q">What must a learner do without AI?</p></a>
+</div></div>
+
+<!-- AXIS 1 -->
+<section class="chapter"><div class="col">
+  <h2 id="axis1"><span class="syn-n">1 · AXIS ONE · PROFESSIONS</span>The first step in is changing</h2>
+  <p class="lead2">Software jobs aren’t vanishing. What’s changing is the first step in. The work juniors used to learn on is increasingly done by tools, and employers are asking for something else: people who can frame a problem, check the output and own the result.</p>
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 1</div><div class="fig-t">AI skills went from rare to routine in a year of job ads</div>
+    <svg viewBox="0 0 720 270" role="img" aria-label="Share of job ads asking for AI skills: all ads 9 to 19 percent; entry-level ads 8.3 to 13.8 percent, Q1 2025 to Q1 2026">
+      <g font-family="Inter,system-ui" font-size="12" fill="#62647A">
+        <line x1="70" y1="230" x2="660" y2="230" stroke="#171B2B"/>
+        <line x1="70" y1="140" x2="660" y2="140" stroke="#E5DED2" stroke-dasharray="3 4"/><line x1="70" y1="50" x2="660" y2="50" stroke="#E5DED2" stroke-dasharray="3 4"/>
+        <text x="60" y="234" text-anchor="end">0%</text><text x="60" y="144" text-anchor="end">10%</text><text x="60" y="54" text-anchor="end">20%</text>
+        <text x="170" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">Q1 2025</text><text x="560" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">Q1 2026</text>
+      </g>
+      <line x1="170" y1="149" x2="560" y2="59" stroke="#244CFF" stroke-width="3"/>
+      <line x1="170" y1="155.3" x2="560" y2="105.8" stroke="#F4AC78" stroke-width="3"/>
+      <circle cx="170" cy="149" r="6" fill="#244CFF"/><circle cx="560" cy="59" r="6" fill="#244CFF"/>
+      <circle cx="170" cy="155.3" r="6" fill="#F4AC78"/><circle cx="560" cy="105.8" r="6" fill="#F4AC78"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="22" fill="#171B2B"><text x="155" y="140" text-anchor="end">9%</text><text x="575" y="57">19%</text><text x="155" y="172" text-anchor="end">8.3%</text><text x="575" y="112">13.8%</text></g>
+      <g font-family="Inter,system-ui" font-size="13"><text x="575" y="76" fill="#244CFF">all job ads</text><text x="575" y="130" fill="#C27A45">entry-level ads</text></g>
+    </svg>
+    <figcaption><b>Source:</b> FrogHire, 20.7 million job ads, 2026<sup class="cite"><a href="#r-1" aria-label="Reference 1">1</a></sup>. A rise in ads is not yet a rise in hiring.</figcaption>
+  </figure>
+  <table class="signals"><thead><tr><th>Signal</th><th>What it shows</th><th class="src">Source</th></tr></thead><tbody>
+    <tr><td class="big">−13%</td><td>Relative employment drop for ages 22–25 in AI-exposed occupations (late 2022 → mid 2025), while older workers in the same jobs held steady or grew.</td><td class="src"><a href="https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/" target="_blank" rel="noopener">Brynjolfsson, Chandar &amp; Chen, Stanford, 2025</a><sup class="cite"><a href="#r-2" aria-label="Reference 2">2</a></sup></td></tr>
+    <tr><td class="big">+14%</td><td>Software-developer postings year on year, 47% mentioning AI. IT overall is still about 30% below pre-pandemic.</td><td class="src"><a href="https://www.hiringlab.org/" target="_blank" rel="noopener">Indeed Hiring Lab, May 2026</a><sup class="cite"><a href="#r-3" aria-label="Reference 3">3</a></sup></td></tr>
+    <tr><td class="big">75%</td><td>Of new code at Google generated by AI and approved by engineers.</td><td class="src">Google Cloud Next, Apr 2026<sup class="cite"><a href="#r-4" aria-label="Reference 4">4</a></sup></td></tr>
+    <tr><td class="big">36%</td><td>Of new US startups founded by a single founder (23.7% in 2019), who still raise only ~15% of round money.</td><td class="src">Carta, 2025<sup class="cite"><a href="#r-5" aria-label="Reference 5">5</a></sup></td></tr>
+    <tr><td class="big">84 / 46%</td><td>Developers who use or plan to use AI tools / who don’t trust their accuracy.</td><td class="src"><a href="https://survey.stackoverflow.co/2025/" target="_blank" rel="noopener">Stack Overflow survey, 2025</a><sup class="cite"><a href="#r-6" aria-label="Reference 6">6</a></sup></td></tr>
+    <tr><td class="big">39%</td><td>Of workers’ core skills employers expect to change by 2030. Analytical thinking (69% of employers) and resilience, flexibility and agility (67%) top the core list.</td><td class="src"><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener">WEF, Future of Jobs 2025</a><sup class="cite"><a href="#r-7" aria-label="Reference 7">7</a></sup></td></tr>
+  </tbody></table>
+  <h3>A view from inside the frontier</h3>
+  <p>An AI company is an unusual employer, but it can work as a leading indicator. In October 2026 Anthropic published an analysis of its own employment data, AI-agent telemetry, hiring records and 17 employee interviews. The pattern matches the first-rung signal above, from the inside.</p>
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 1B</div><div class="fig-t">Juniors thin out where agents do the implementation</div>
+    <svg viewBox="0 0 720 250" role="img" aria-label="At Anthropic, junior share of technical employees fell from 21 to 14 percent and junior share of technical hires from 27 to 9 percent since early 2025">
+      <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#62647A"><text x="0" y="20">JUNIOR SHARE · TECHNICAL EMPLOYEES</text><text x="370" y="20">JUNIOR SHARE · TECHNICAL HIRES</text></g>
+      <g font-family="Inter,system-ui" font-size="12" fill="#62647A"><text x="60" y="226" text-anchor="middle">early 2025</text><text x="200" y="226" text-anchor="middle">2026</text><text x="430" y="226" text-anchor="middle">early 2025</text><text x="570" y="226" text-anchor="middle">2026</text></g>
+      <line x1="0" y1="206" x2="300" y2="206" stroke="#171B2B"/><line x1="370" y1="206" x2="670" y2="206" stroke="#171B2B"/>
+      <rect x="25" y="101" width="70" height="105" rx="4" fill="#DDD7EE"/><rect x="165" y="136" width="70" height="70" rx="4" fill="#244CFF"/>
+      <rect x="395" y="71" width="70" height="135" rx="4" fill="#DDD7EE"/><rect x="535" y="161" width="70" height="45" rx="4" fill="#C8102E"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="24" fill="#171B2B" text-anchor="middle"><text x="60" y="92">21%</text><text x="200" y="127">14%</text><text x="430" y="62">27%</text><text x="570" y="152">9%</text></g>
+    </svg>
+    <figcaption><b>Source:</b> <a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">Wilmers, Catipon, Massenkoff &amp; McCrory, “How employment is changing at Anthropic”</a><sup class="cite"><a href="#r-8" aria-label="Reference 8">8</a></sup>, The Anthropic Institute, Oct 2026. One company at the frontier, growing fast; the authors caution that much of its practice cannot be replicated across the economy.</figcaption>
+  </figure>
+  <table class="signals"><thead><tr><th>Signal</th><th>What it shows</th><th class="src">Source</th></tr></thead><tbody>
+    <tr><td class="big">6 : 1</td><td>Hours worked by employee-directed AI agents per employee hour by August 2026. Code commits per engineer ran about 5× their level six months earlier, with no measurable rise in reverted code.</td><td class="src"><a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">Anthropic Institute, Oct 2026</a><sup class="cite"><a href="#r-8" aria-label="Reference 8">8</a></sup></td></tr>
+    <tr><td class="big">10 → 22%</td><td>Share of employees’ AI sessions spent on “meta-work”: writing specs for agents, reviewing their output, monitoring pipelines. Reading all agent output would take over half the work week even for non-technical staff.</td><td class="src"><a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">Anthropic Institute, Oct 2026</a><sup class="cite"><a href="#r-8" aria-label="Reference 8">8</a></sup></td></tr>
+    <tr><td class="big">≈ 3×</td><td>Growth in how often hiring managers mention a candidate’s creative use of AI tools in technical assessments (2024 → 2026). Comments on autonomy and judgment rose most; domain expertise shrank as a share of assessment.</td><td class="src"><a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">Anthropic Institute, Oct 2026</a><sup class="cite"><a href="#r-8" aria-label="Reference 8">8</a></sup></td></tr>
+  </tbody></table>
+  <p>The report also names a tension that belongs in an education discussion: as employees automate their own tasks, some are “increasingly removed from the object-level work that originally built their skills”. Employment protections for incumbents, the authors note, do not help those who are not hired to begin with.</p>
+  <p>Across these sources, the skills that show up more often are a recognisable set: breaking a problem down and specifying it in writing, judging AI output for correctness and safety, understanding a system end to end, and holding a product decision. “Programmer” describes less and less of the work. Architect, engineer, conductor and builder are all on the table; none has won.</p>
+  <div class="not"><b>What this does not say.</b> The labour data is descriptive, not causal: interest rates, post-pandemic correction and AI move together. Company figures describe one company. Rising demand in ads is not yet rising demand in hiring.</div>
+  <h3>Open questions</h3>
+  <ol class="qs">
+    <li>What does a graduate know that a domain expert with AI tools doesn’t, and the other way round?</li>
+    <li>If the first role demands more, what counts as “ready for a first job” in 2028?</li>
+    <li>Which skills are best learned on the job, and which must arrive ready from a program?</li>
+    <li>Is a new job title a rebrand, or a change in what we teach and assess?</li>
+    <li>If employers weigh judgment over implementation, how do young people build judgment when the implementation work that used to train it is done by agents?</li>
+  </ol>
+  <p class="bridge"><span>Where this leads</span>If the entry point into work is shifting, the next question is how quickly. That matters for education in a specific way: a curriculum is a long-cycle instrument. Section 2 asks whether the cycle of the tools has become shorter than the cycle of schooling.</p>
+</div></section>
+
+<!-- AXIS 2 -->
+<section class="chapter"><div class="col">
+  <h2 id="axis2"><span class="syn-n">2 · AXIS TWO · PACE AND RADIUS</span>Faster than the instruments</h2>
+  <p class="lead2">The tools are moving faster than our ability to measure them, let alone teach them. That speed, more than any single breakthrough, is what makes planning feel so hard.</p>
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 2</div><div class="fig-t">One syllabus cycle, about seven times the capability</div>
+    <svg viewBox="0 0 720 290" role="img" aria-label="Over one school year a syllabus updates once while tool capability, at a 4.3-month doubling time, grows about 6.9 times">
+      <g font-family="Inter,system-ui" font-size="12" fill="#62647A">
+        <line x1="70" y1="230" x2="670" y2="230" stroke="#171B2B"/>
+        <text x="70" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">month 0</text><text x="285" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">4.3</text><text x="500" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">8.6</text><text x="670" y="252" text-anchor="middle" font-family="IBM Plex Mono,monospace">12</text>
+      </g>
+      <path d="M70 230V208H285V186H500V142H670V78.2V230Z" fill="#E6EBFF"/>
+      <path d="M70 208H285V186H500V142H670" fill="none" stroke="#244CFF" stroke-width="2.5"/>
+      <path d="M500 142 C560 128 620 104 670 78" fill="none" stroke="#244CFF" stroke-width="2.5" stroke-dasharray="5 4"/><circle cx="670" cy="78" r="6" fill="#244CFF"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="20" fill="#171B2B"><text x="80" y="200">×1</text><text x="295" y="178">×2</text><text x="510" y="134">×4</text><text x="600" y="66">×6.9</text></g>
+      <rect x="70" y="262" width="600" height="14" rx="7" fill="#F4AC78" opacity=".35"/><circle cx="70" cy="269" r="7" fill="#F4AC78"/><circle cx="670" cy="269" r="7" fill="#F4AC78"/>
+      <text x="370" y="273" text-anchor="middle" font-family="Inter,system-ui" font-size="11.5" fill="#3A3F52">one syllabus update per year</text>
+      <text x="80" y="40" font-family="Inter,system-ui" font-size="13" fill="#244CFF">tool capability, relative to the start of the year</text>
+    </svg>
+    <figcaption><b>Calculated</b> from <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">METR’s</a><sup class="cite"><a href="#r-9" aria-label="Reference 9">9</a></sup> measured doubling time of 4.3 months for the length of tasks models complete alone (Time Horizon 1.1, 2026): 2<sup>12/4.3</sup> ≈ 6.9. A trend, not a law; it may slow or speed up.</figcaption>
+  </figure>
+  <table class="signals"><thead><tr><th>Signal</th><th>What it shows</th><th class="src">Source</th></tr></thead><tbody>
+    <tr><td class="big">16 h</td><td>Length of expert task the leading model handled alone by May 2026. In 2022 it was about 30 seconds.</td><td class="src"><a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">METR, Time Horizon 1.1, 2026</a><sup class="cite"><a href="#r-9" aria-label="Reference 9">9</a></sup></td></tr>
+    <tr><td class="big">280×</td><td>Cheaper for the same capability in about two years. Total spend does not fall: volume grows faster.</td><td class="src"><a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" rel="noopener">Stanford AI Index 2025</a><sup class="cite"><a href="#r-10" aria-label="Reference 10">10</a></sup>; <a href="https://epoch.ai/data-insights/llm-inference-price-trends" target="_blank" rel="noopener">Epoch AI</a><sup class="cite"><a href="#r-11" aria-label="Reference 11">11</a></sup></td></tr>
+    <tr><td class="big">2033–2061</td><td>Range of expert and forecaster estimates for human-level AI over the last decade, moving in both directions year to year.</td><td class="src"><a href="https://arxiv.org/abs/2401.02843" target="_blank" rel="noopener">AI Impacts; Metaculus</a><sup class="cite"><a href="#r-12" aria-label="Reference 12">12</a></sup></td></tr>
+    <tr><td class="big">0</td><td>Pauses that followed the promises to slow down: the 2023 open letter, Bletchley, Seoul, Paris. Parts of the EU AI Act slipped to 2027–2028.</td><td class="src"><a href="https://futureoflife.org/open-letter/pause-giant-ai-experiments/" target="_blank" rel="noopener">FLI; gov.uk; Sidley Austin</a><sup class="cite"><a href="#r-13" aria-label="Reference 13">13</a></sup></td></tr>
+  </tbody></table>
+  <p><b>The radius is wide.</b> AI contributed to a Nobel in chemistry (AlphaFold), reached gold at the International Math Olympiad and solved open Erdős problems, while its authors note it is stronger at search and construction than at deep insight. In organisations, eight recent incidents shared five structures: permissions as the blast radius, production faster than review, usage pricing with no ceiling, AI outside the fence, and removing the human layer only to rebuild it later. Historian Yuval Noah Harari<sup class="cite"><a href="#r-14" aria-label="Reference 14">14</a></sup> put the deeper worry in one image: cows see the farmer but not the market that decides their lives, and we may come to live inside AI-built financial and legal systems we cannot understand.</p>
+  <div class="not"><b>What this does not say.</b> Benchmarks measure defined software tasks, not real jobs. Incidents are cases, not failure rates. A metaphor is a lens, not a forecast.</div>
+  <h3>Open questions</h3>
+  <ol class="qs">
+    <li>If the tool changes several times within one school year, what is stable enough to teach, and what isn’t?</li>
+    <li>What changes in planning when forecasts themselves are unreliable?</li>
+    <li>Who is responsible for understanding systems nobody fully built: the user, the organisation, the educator, or no one?</li>
+    <li>What happens to young people when the first door narrows, and who notices first?</li>
+  </ol>
+  <p class="bridge"><span>Where this leads</span>Speed alone does not tell us what to teach. To move from labour markets to classrooms we need evidence on learning itself: what happens to understanding when AI enters the process. That is the subject of Section 3.</p>
+</div></section>
+
+<!-- AXIS 3 -->
+<section class="chapter"><div class="col">
+  <h2 id="axis3"><span class="syn-n">3 · AXIS THREE · MEANINGFUL SKILLS</span>Design decides, not the model</h2>
+  <p class="lead2">The learning research is thinner than the hype, but it keeps pointing the same way: what matters is how AI is woven into learning, not which model you pick. And the stronger the machine gets, the more we seem to value what is human, hands-on and verified.</p>
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 3</div><div class="fig-t">The same technology, from large gains to none to harm</div>
+    <svg viewBox="0 0 720 312" role="img" aria-label="Effect sizes: designed AI tutor at Harvard 0.73 to 1.3 SD; teacher-guided tutoring in Nigeria 0.23 SD in English; two years of AI tutor in middle schools about zero; open chatbot practice minus 17 percent on a test without AI">
+      <g font-family="Inter,system-ui" font-size="12" fill="#62647A">
+        <line x1="300" y1="20" x2="300" y2="214" stroke="#171B2B"/>
+        <line x1="420" y1="20" x2="420" y2="214" stroke="#E5DED2" stroke-dasharray="3 4"/><line x1="540" y1="20" x2="540" y2="214" stroke="#E5DED2" stroke-dasharray="3 4"/><line x1="660" y1="20" x2="660" y2="214" stroke="#E5DED2" stroke-dasharray="3 4"/>
+        <text x="300" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace">0</text><text x="420" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace">+0.5</text><text x="540" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace">+1.0</text><text x="660" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace">+1.5 SD</text>
+      </g>
+      <g font-family="Inter,system-ui" font-size="13" fill="#171B2B">
+        <text x="0" y="50">Designed tutor, university physics</text><text x="0" y="66" font-size="11.5" fill="#62647A">Kestin et al., 2025 · 194 students</text>
+        <text x="0" y="114">Teacher-guided tutoring, 6 weeks</text><text x="0" y="130" font-size="11.5" fill="#62647A">World Bank, Nigeria, 2025 · English</text>
+        <text x="0" y="178">AI tutor, two years, middle school</text><text x="0" y="194" font-size="11.5" fill="#62647A">Oreopoulos &amp; Low, NBER, 2026</text>
+      </g>
+      <rect x="475" y="44" width="137" height="18" rx="9" fill="#244CFF"/><text x="620" y="58" font-family="Newsreader,Georgia,serif" font-size="18" fill="#171B2B">0.73–1.3</text>
+      <line x1="300" y1="117" x2="355" y2="117" stroke="#244CFF" stroke-width="3"/><circle cx="355" cy="117" r="8" fill="#244CFF"/><text x="369" y="123" font-family="Newsreader,Georgia,serif" font-size="18" fill="#171B2B">0.23</text>
+      <circle cx="300" cy="181" r="8" fill="#fff" stroke="#171B2B" stroke-width="2"/><text x="314" y="187" font-family="Newsreader,Georgia,serif" font-size="18" fill="#171B2B">≈ 0</text>
+      <rect x="0" y="248" width="720" height="58" rx="10" fill="#FCE6D6"/>
+      <text x="16" y="270" font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#62647A">DIFFERENT MEASURE · HIGH SCHOOL MATHS · BASTANI ET AL., 2025</text>
+      <text x="16" y="293" font-family="Inter,system-ui" font-size="13" fill="#171B2B">Practised with an <tspan font-weight="600">open chatbot</tspan>, then tested without AI:</text>
+      <text x="370" y="294" font-family="Newsreader,Georgia,serif" font-size="20" fill="#C8102E">−17%</text>
+      <text x="424" y="293" font-family="Inter,system-ui" font-size="13" fill="#171B2B">· with a <tspan font-weight="600">designed tutor</tspan>: no drop</text>
+    </svg>
+    <figcaption><b>Not to compare head to head.</b> Different ages, subjects, durations and measures. What they share: the outcome followed how the tool was built into learning, and whether students used it. Sources, top to bottom: <a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noopener">Kestin et al., 2025</a><sup class="cite"><a href="#r-15" aria-label="Reference 15">15</a></sup>; <a href="https://doi.org/10.1596/1813-9450-11125" target="_blank" rel="noopener">De Simone et al., 2025</a><sup class="cite"><a href="#r-16" aria-label="Reference 16">16</a></sup> (effect on English, the main outcome); <a href="https://www.nber.org/papers/w35620" target="_blank" rel="noopener">Oreopoulos &amp; Low, 2026</a><sup class="cite"><a href="#r-17" aria-label="Reference 17">17</a></sup>; <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">Bastani et al., 2025</a><sup class="cite"><a href="#r-18" aria-label="Reference 18">18</a></sup>.</figcaption>
+  </figure>
+  <table class="signals"><thead><tr><th>Signal</th><th>What it shows</th><th class="src">Source</th></tr></thead><tbody>
+    <tr><td class="big">50 / 67%</td><td>Comprehension score when developers delegated to AI vs wrote by hand; time savings not significant.</td><td class="src">Shen &amp; Tamkin, Anthropic, 2026 (52 devs)<sup class="cite"><a href="#r-19" aria-label="Reference 19">19</a></sup></td></tr>
+    <tr><td class="big">58%</td><td>Of education systems restrict phones in school (about 24% in 2023). Handwritten exam books, in-person assessment tracks and in-person interviews are returning.</td><td class="src">UNESCO GEM, 2026; WSJ; Univ. of Sydney<sup class="cite"><a href="#r-20" aria-label="Reference 20">20</a></sup></td></tr>
+    <tr><td class="big">~47%</td><td>Of university students’ conversations with Claude were “direct”: seeking an answer or a finished output with minimal engagement. Computer-science students were 38.6% of conversations while earning 5.4% of US bachelor’s degrees.</td><td class="src"><a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude" target="_blank" rel="noopener">Anthropic Education Report, Apr 2025 (~1M conversations)</a><sup class="cite"><a href="#r-21" aria-label="Reference 21">21</a></sup></td></tr>
+    <tr><td class="big">g ≈ 0.49</td><td>Average transfer from learning to program to other thinking skills; larger for near transfer than far. Generic “brain training” shows little far transfer.</td><td class="src"><a href="https://doi.org/10.1037/edu0000314" target="_blank" rel="noopener">Scherer et al., 2019</a><sup class="cite"><a href="#r-22" aria-label="Reference 22">22</a></sup>; <a href="https://doi.org/10.1177/0963721417712760" target="_blank" rel="noopener">Sala &amp; Gobet, 2017</a><sup class="cite"><a href="#r-23" aria-label="Reference 23">23</a></sup></td></tr>
+    <tr><td class="big">4 domains</td><td>The new OECD–EC framework splits AI literacy into Engage, Create, Manage and Shape AI. It will underpin the first PISA test of media and AI literacy in 2029.</td><td class="src"><a href="https://ailiteracyframework.org/" target="_blank" rel="noopener">OECD &amp; European Commission, June 2026</a><sup class="cite"><a href="#r-24" aria-label="Reference 24">24</a></sup></td></tr>
+  </tbody></table>
+  <p>Universities moved first on literacy: Ohio State, Purdue and the Technion now require AI fluency for every student, and none has published outcome data yet. The skills that keep surfacing are older than AI: decomposing problems, evaluating output, understanding systems, domain expertise, and the ability to learn the next tool, which, when tools change every few months, is part of the skill itself.</p>
+  <div class="not"><b>What this does not say.</b> Most trials are short and small, some are preprints. No published results is not proof of failure. The offline turn is not evidence that offline is better.</div>
+  <h3>Open questions</h3>
+  <ol class="qs">
+    <li>What must a learner be able to do without AI, and what can safely be left to the tool?</li>
+    <li>How do we know someone understands, and isn’t just producing: tests, portfolios, defending their code, or a mix?</li>
+    <li>What do we keep offline on purpose, and can we tell it apart from what is offline by habit?</li>
+    <li>When the decision comes before the evidence, what makes a program an experiment we can learn from rather than a commitment?</li>
+  </ol>
+  <p class="bridge"><span>Where this leads</span>The three axes describe a global picture. Policy, however, is made locally. Section 4 reads Israel’s recent decisions against that picture, asking not whether they are right, but whom they reach and what they leave undescribed.</p>
+</div></section>
+
+<section class="chapter"><div class="col">
+  <h2 id="israel"><span class="syn-n">4 · THE ISRAELI LENS</span>What the system has decided, and what it hasn’t</h2>
+  <p class="lead2">Israel isn’t waiting. In 2026 the Ministry of Education set AI targets for the whole school system and opened a selective AI major for high school. Those are real decisions. What is still open is who each one is really for, who will teach it, and how we will know it worked.</p>
+
+  <h3>What has been decided</h3>
+  <table class="signals"><thead><tr><th>Decision</th><th>What it says</th><th class="src">Source</th></tr></thead><tbody>
+    <tr><td class="big">80%</td><td>Target share of pupils from grade 4 up with basic AI competence in 2026–27 (“AI for all”). Alongside it: 60% of grade 10–12 students experiencing AI in a matriculation exam, and 70% of teaching staff with basic competence.</td><td class="src">Ministry of Education, Strategic focus for 2026–27 (Apr 2026)<sup class="cite"><a href="#r-25" aria-label="Reference 25">25</a></sup></td></tr>
+    <tr><td class="big">AI1–3</td><td>Middle-school computer science: three AI units woven into the existing Python A–C courses, replacing the old track fully by 2028–29. Exam questions involving language models already appear in Python B (grade 8) and C (grade 9).</td><td class="src">CS chief-inspector circular (Aug 2026)<sup class="cite"><a href="#r-26" aria-label="Reference 26">26</a></sup></td></tr>
+    <tr><td class="big">15 units</td><td>A new “AI scientists” high-school major: machine learning, deep learning, advanced linear algebra and statistics, Python. Selective: top students with 5-unit maths and English plus a science. First stage about 50 schools. An early report spoke of 10 units.</td><td class="src">Ministry documents; pc.co.il (Aug 2026); ynet (2025)<sup class="cite"><a href="#r-27" aria-label="Reference 27">27</a></sup></td></tr>
+    <tr><td class="big">50 → 300</td><td>Teachers planned for the major: about 50 in year one, 200–300 within four years. Partners named include the Weizmann Institute, the Cyber Education Center and Google.</td><td class="src">pc.co.il interview with the Ministry (Aug 2026)<sup class="cite"><a href="#r-27" aria-label="Reference 27">27</a></sup></td></tr>
+    <tr><td class="big">90 h</td><td>A grade-9 preparatory course for the major in about 50 schools: ML concepts, data in Python, classification and language models, ethics, a final project.</td><td class="src">Ministry; Hebetim 53 (Technion, Dec 2025)<sup class="cite"><a href="#r-28" aria-label="Reference 28">28</a></sup></td></tr>
+  </tbody></table>
+
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 4 · AN INTERPRETATION</div><div class="fig-t">Two published tracks, and a middle no one has described yet</div>
+    <svg viewBox="0 0 720 330" role="img" aria-label="A three-tier diagram: a narrow selective AI major at the top, a wide universal AI-for-all layer at the bottom, and an undefined middle between them">
+      <path d="M290 30H430L470 100H250Z" fill="#171B2B"/>
+      <text x="360" y="62" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="17" fill="#fff">AI scientists major</text>
+      <text x="360" y="84" text-anchor="middle" font-family="Inter,system-ui" font-size="11.5" fill="#C9CDE0">selected · ~50 schools · 15 units</text>
+      <path d="M232 110H488L584 210H136Z" fill="#E6EBFF" stroke="#244CFF" stroke-width="2" stroke-dasharray="7 6"/>
+      <text x="360" y="150" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" font-style="italic" fill="#244CFF">the missing middle</text>
+      <text x="360" y="174" text-anchor="middle" font-family="Inter,system-ui" font-size="12.5" fill="#3A3F52">able teenagers outside the selective track,</text>
+      <text x="360" y="192" text-anchor="middle" font-family="Inter,system-ui" font-size="12.5" fill="#3A3F52">especially beyond the strongest schools · not yet described</text>
+      <path d="M154 220H566L650 310H70Z" fill="#DDD7EE"/>
+      <text x="360" y="256" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="19" fill="#171B2B">“AI for all”</text>
+      <text x="360" y="280" text-anchor="middle" font-family="Inter,system-ui" font-size="12" fill="#3A3F52">universal basic competence · 80% target from grade 4 · AI in exams</text>
+      <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#62647A"><text x="690" y="66" text-anchor="end">DEPTH</text><text x="690" y="270" text-anchor="end">REACH</text></g>
+      <line x1="700" y1="74" x2="700" y2="258" stroke="#CFC8B8" stroke-width="1.5"/>
+    </svg>
+    <figcaption><b>A reading of public documents, not a measured result.</b> The top and bottom layers are published Ministry plans. The middle layer is what the discussion called the missing middle: what most technologically able teenagers get, and who teaches them, has not been described.</figcaption>
+  </figure>
+
+  <h3>What the market around it shows</h3>
+  <figure class="viz rv">
+    <div class="fig-k">FIGURE 5</div><div class="fig-t">Three Israeli signals, before and after</div>
+    <svg viewBox="0 0 720 250" role="img" aria-label="Three small slope charts: hi-tech share of job seekers 4 to 11 percent; CS bachelor enrollment 22,203 to 20,571; NEET aged 18 to 24 in Israel 17 to 20 percent while the OECD average fell 16 to 13 percent">
+      <g font-family="IBM Plex Mono,monospace" font-size="10.5" fill="#62647A"><text x="20" y="22">HI-TECH SHARE OF JOB SEEKERS</text><text x="260" y="22">CS BACHELOR’S ENROLLMENT</text><text x="500" y="22">NEET, AGES 18–24</text></g>
+      <g stroke="#CFC8B8"><line x1="40" y1="200" x2="200" y2="200"/><line x1="280" y1="200" x2="440" y2="200"/><line x1="520" y1="200" x2="680" y2="200"/></g>
+      <g font-family="Inter,system-ui" font-size="11" fill="#62647A"><text x="50" y="220" text-anchor="middle">2019</text><text x="190" y="220" text-anchor="middle">May 2026</text><text x="290" y="220" text-anchor="middle">prev. year</text><text x="430" y="220" text-anchor="middle">2025–26</text><text x="530" y="220" text-anchor="middle">2015</text><text x="670" y="220" text-anchor="middle">2025</text></g>
+      <line x1="50" y1="176" x2="190" y2="66" stroke="#244CFF" stroke-width="3"/><circle cx="50" cy="176" r="5" fill="#244CFF"/><circle cx="190" cy="66" r="5" fill="#244CFF"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="19" fill="#171B2B"><text x="42" y="182" text-anchor="end">4%</text><text x="180" y="56" text-anchor="end">11%</text></g>
+      <line x1="290" y1="70" x2="430" y2="110" stroke="#C8102E" stroke-width="3"/><circle cx="290" cy="70" r="5" fill="#C8102E"/><circle cx="430" cy="110" r="5" fill="#C8102E"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="17" fill="#171B2B"><text x="290" y="56">22,203</text><text x="430" y="134" text-anchor="end">20,571</text></g><text x="360" y="160" text-anchor="middle" font-family="Inter,system-ui" font-size="12" fill="#C8102E">−7.4%</text>
+      <line x1="530" y1="110" x2="670" y2="80" stroke="#244CFF" stroke-width="3"/><circle cx="530" cy="110" r="5" fill="#244CFF"/><circle cx="670" cy="80" r="5" fill="#244CFF"/>
+      <line x1="530" y1="120" x2="670" y2="150" stroke="#CFC8B8" stroke-width="3"/><circle cx="530" cy="120" r="5" fill="#CFC8B8"/><circle cx="670" cy="150" r="5" fill="#CFC8B8"/>
+      <g font-family="Newsreader,Georgia,serif" font-size="16"><text x="522" y="104" text-anchor="end" fill="#171B2B">17%</text><text x="678" y="78" fill="#171B2B">20%</text><text x="522" y="130" text-anchor="end" fill="#62647A">16%</text><text x="678" y="156" fill="#62647A">13%</text></g>
+      <g font-family="Inter,system-ui" font-size="11"><text x="600" y="60" text-anchor="middle" fill="#244CFF">Israel</text><text x="600" y="172" text-anchor="middle" fill="#62647A">OECD average</text></g>
+    </svg>
+    <figcaption><b>Sources:</b> Israel Employment Service via Maariv (May 2026)<sup class="cite"><a href="#r-29" aria-label="Reference 29">29</a></sup>; Council for Higher Education data as reported (Oct 2026)<sup class="cite"><a href="#r-30" aria-label="Reference 30">30</a></sup>, math, statistics and CS, excluding the Open University; <a href="https://www.ynetnews.com/business/article/hk7b4s9qme" target="_blank" rel="noopener">OECD, Education at a Glance 2026</a><sup class="cite"><a href="#r-31" aria-label="Reference 31">31</a></sup>. Scales differ per chart. None of these is tied causally to AI.</figcaption>
+  </figure>
+  <p>The Israel Innovation Authority<sup class="cite"><a href="#r-32" aria-label="Reference 32">32</a></sup> found three times as many companies saying they cut hiring because of AI adoption, while the same firms still hired 8% and laid off 2.8%: gradual adjustment, not a shock. Placement firms describe a market “not open to juniors”. That is the same first-rung pattern seen in the US data, at Israeli scale.</p>
+  <p class="bridge"><span>Where this leads</span>Decisions on paper become questions in a room. The discussion this synthesis was prepared for worked through a set of deliberate tensions; Section 5 reproduces them as they were posed.</p>
+</div></section>
+
+<section class="chapter"><div class="col">
+  <h2 id="windows"><span class="syn-n">5 · DISCUSSION WINDOWS</span>What the room argued about</h2>
+  <p class="lead2">In the room, we stopped every so often to hold a tension on purpose: two positions, both taken seriously, no rush to settle. Here they are as they were asked, without the room’s conclusions, so you can have the argument yourself.</p>
+</div>
+<div class="wide"><div class="qgrid">
+  <div class="qcard rv"><div class="qk">WINDOW 1 <i>EXPERTISE</i></div><h4>The teacher who built an app</h4><p>A maths teacher builds an adaptive practice app for her class over a weekend, without writing code. What does someone who studied technology know that she doesn’t, and what does she know that they don’t? Who is responsible when pupils’ data leaks?</p></div>
+  <div class="qcard rv"><div class="qk">WINDOW 2 <i>EQUITY</i></div><h4>When the bar rises</h4><p>Beyond “programmer”, who are we prepared to leave behind? And if the graduate is no longer a programmer, what is the name of the person we are preparing: architect, engineer, conductor, builder, or a role that doesn’t exist yet?</p></div>
+  <div class="qcard rv"><div class="qk">WINDOW 3 <i>TIMING</i></div><h4>Lead, or wait for the employer?</h4><p>Everything is moving and the main destination of graduates has not changed what it asks for. Change programs before being asked, or hold the bar accepted today? If AI props weaker learners up, will they feel successful without understanding the logic?</p></div>
+  <div class="qcard rv"><div class="qk">WINDOW 4 <i>FOUNDATIONS</i></div><h4>What is worth teaching?</h4><p>Code without AI until thinking is built, or AI from day one, learning to think through the tool? What must a learner be able to do without it, and who updates the volatile layer, at what pace?</p></div>
+  <div class="qcard rv"><div class="qk">OPEN THREAD <i>ASSESSMENT</i></div><h4>Understanding or producing?</h4><p>How do we know a learner understands and isn’t just producing? Exams, portfolios, defending one’s own code in person, or a mix, and which of these survives at scale?</p></div>
+  <div class="qcard rv"><div class="qk">OPEN THREAD <i>TEACHERS</i></div><h4>Who teaches in 2028?</h4><p>The system plans tens of teachers for a new major while tools change several times in one school year. How are educators prepared, and is the educator now part of the product?</p></div>
+</div></div></section>
+
+<div class="col">  <p class="bridge"><span>Where this leads</span>Across the windows, the same underlying disagreement kept resurfacing in different forms. Section 6 makes it explicit.</p>
+</div>
+<section class="chapter"><div class="col">
+  <h2 id="framings"><span class="syn-n">6 · THREE FRAMINGS</span>What exactly are we teaching?</h2>
+  <p class="lead2">Underneath every one of those arguments sits a simpler question. When people say “AI education”, they usually mean one of three very different things, each with its own logic, evidence, cost and shelf life. Pulling them apart makes the conversation clearer. Choosing between them is left to you.</p>
+</div>
+<div class="col"><figure class="doors rv"><img src="comic/framings-doors.webp" width="1200" height="880" loading="lazy" alt="A teenager and an educator stand before three doors: Work with AI, The science of AI, and Learn to adapt. No door is highlighted."><figcaption>Three doors, none of them marked as the right one. The rest of this section describes what lies behind each.</figcaption></figure></div>
+<div class="wide"><div class="answers">
+  <article class="ans rv">
+    <div class="ans-k">FRAMING A</div>
+    <h4>Teach working <em>with</em> AI</h4>
+    <p class="ans-d">AI as a way of working: using, prompting, delegating, checking and owning what a tool produces, in any subject.</p>
+    <p class="bq">Can every learner use AI well, and know when not to?</p>
+    <dl>
+      <dt>In Israel now</dt><dd>“AI for all”: the 80% competence target, AI in matriculation exams, LLM questions in middle-school CS exams.</dd>
+      <dt>Elsewhere</dt><dd>OECD–EC Engage, Create and Manage domains; AI-fluency requirements at Ohio State, Purdue and the Technion; Estonia’s school-wide AI Leap.</dd>
+      <dt>What the evidence says</dt><dd>Designed use helps; open use can hurt the test without AI. How it is built in decides the effect.</dd>
+      <dt>The question it leaves open</dt><dd>How do we avoid teaching an interface that expires, and output without understanding?</dd>
+    </dl>
+  </article>
+  <article class="ans rv">
+    <div class="ans-k">FRAMING B</div>
+    <h4>Teach the <em>science</em> of AI</h4>
+    <p class="ans-d">AI as a discipline: how models learn, the maths underneath, data, evaluation, building and shaping systems.</p>
+    <p class="bq">Who will understand, build and question these systems from the inside?</p>
+    <dl>
+      <dt>In Israel now</dt><dd>The selective 15-unit AI scientists major and its grade-9 preparatory course, about 50 schools each.</dd>
+      <dt>Elsewhere</dt><dd>UNESCO’s<sup class="cite"><a href="#r-33" aria-label="Reference 33">33</a></sup> “AI techniques” and “system design”; the OECD–EC “Shape AI” domain; at least 8 hours of AI a year in Beijing schools from autumn 2025.</dd>
+      <dt>What the evidence says</dt><dd>Durable concepts outlast tools, but there are no outcome studies yet for school-level AI majors.</dd>
+      <dt>The question it leaves open</dt><dd>Who gets in when selection runs on maths scores, and where do the teachers come from?</dd>
+    </dl>
+  </article>
+  <article class="ans rv">
+    <div class="ans-k">FRAMING C</div>
+    <h4>Teach the capacity to <em>adapt</em></h4>
+    <p class="ans-d">The skills to cope with change at this pace: decomposing problems, judging output, understanding systems, learning the next tool, persisting.</p>
+    <p class="bq">What will still matter after the next three tools?</p>
+    <dl>
+      <dt>In Israel now</dt><dd>Present in rhetoric and in some programs, not yet as a measured, assessed strand of the curriculum.</dd>
+      <dt>Elsewhere</dt><dd>WEF: 39% of core skills expected to change by 2030; UNESCO’s “human-centred mindset”.</dd>
+      <dt>What the evidence says</dt><dd>Mixed. Far transfer from generic training is weak; learning to program transfers moderately (g ≈ 0.49).</dd>
+      <dt>The question it leaves open</dt><dd>Can it be taught and assessed on its own, or only through a real domain?</dd>
+    </dl>
+  </article>
+</div></div>
+<div class="col">
+  <h3>Side by side</h3>
+  <div class="tablewrap"><table class="cmp"><thead><tr><th></th><th>A · With AI</th><th>B · Science of AI</th><th>C · Adapt</th></tr></thead><tbody>
+    <tr><th>The learner leaves with</th><td>Fluent, critical use of current tools</td><td>Understanding of how AI works and how to build it</td><td>Habits of mind that carry to the next tool and job</td></tr>
+    <tr><th>Who it reaches</th><td>Everyone</td><td>A selected group</td><td>Everyone, in principle</td></tr>
+    <tr><th>What teachers need</th><td>Tool and pedagogy training, refreshed often</td><td>Deep subject expertise; scarce</td><td>Skill in designing tasks and feedback</td></tr>
+    <tr><th>How you assess it</th><td>Tasks with and without AI</td><td>Exams and projects; mature methods</td><td>Unclear; portfolios and performance tasks</td></tr>
+    <tr><th>Shelf life</th><td>Months for tools, years for habits</td><td>Years for foundations</td><td>Longest, if transfer holds</td></tr>
+  </tbody></table></div>
+  <figure class="doors rv"><img src="comic/layers.webp" width="1200" height="880" loading="lazy" alt="A teenager stands on thin ground where tools come and go, labelled Volatile: tools; roots reach into a thick bedrock labelled Stable: decompose, evaluate, systems, learn the next tool."><figcaption>Volatile on top, stable underneath: tools to practise and replace, thinking to teach in depth.</figcaption></figure>
+  <p class="small">One way to read the three framings is by which layer each feeds. A syllabus updates about once a year; the tools above it move about seven times as far in that time (Figure 2).</p>
+  <h3>The questions that decide the mix</h3>
+  <p>Every real program mixes all three. The disagreement is about proportions and order, and it turns on questions this page leaves open:</p>
+  <ol class="qs">
+    <li><b>For whom?</b> A selective pipeline into technical roles and a universal program for every teenager may need opposite mixes.</li>
+    <li><b>In what order?</b> Foundations before the tool, the tool as the way into foundations, or both at once with deliberate “no AI” zones?</li>
+    <li><b>Measured how?</b> If framing C cannot be assessed, will it survive the first budget review? If A is assessed only with AI switched on, will anyone notice what is lost?</li>
+  </ol>
+  <div class="not"><b>What this does not say.</b> The three framings are a lens for discussion, not a taxonomy from the literature, and the evidence behind each is uneven. The Israeli decisions are new; none has outcome data yet.</div>
+</div></section>
+
+
+<section class="chapter"><div class="wide">
+  <h2 id="meet" style="max-width:740px;margin-left:auto;margin-right:auto"><span class="syn-n">WHERE IT MEETS</span>One tension, three sides</h2>
+  <figure class="viz rv" style="max-width:980px;margin-left:auto;margin-right:auto">
+  <svg viewBox="0 0 1000 430" width="100%">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#62647A"></path></marker></defs>
+    <line x1="500" y1="96" x2="225" y2="320" stroke="#CFC8B8" stroke-width="2" marker-end="url(#ar)"></line>
+    <line x1="500" y1="96" x2="775" y2="320" stroke="#CFC8B8" stroke-width="2" marker-end="url(#ar)"></line>
+    <line x1="300" y1="350" x2="700" y2="350" stroke="#CFC8B8" stroke-width="2" marker-end="url(#ar)"></line>
+    <rect x="370" y="22" width="260" height="78" rx="14" fill="#E6EBFF" stroke="#171B2B" stroke-width="1.5"></rect>
+    <text x="500" y="52" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#244CFF">AXIS 2</text>
+    <text x="500" y="80" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" fill="#171B2B">Pace and radius</text>
+    <rect x="70" y="312" width="250" height="78" rx="14" fill="#ECE8F5" stroke="#171B2B" stroke-width="1.5"></rect>
+    <text x="195" y="342" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#244CFF">AXIS 1</text>
+    <text x="195" y="370" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" fill="#171B2B">Professions shift</text>
+    <rect x="680" y="312" width="250" height="78" rx="14" fill="#FCE6D6" stroke="#171B2B" stroke-width="1.5"></rect>
+    <text x="805" y="342" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" fill="#244CFF">AXIS 3</text>
+    <text x="805" y="370" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="22" fill="#171B2B">Meaningful skills</text>
+    <text x="300" y="200" text-anchor="middle" font-family="Inter,system-ui" font-size="14" fill="#3A3F52">speed reshapes</text><text x="300" y="218" text-anchor="middle" font-family="Inter,system-ui" font-size="14" fill="#3A3F52">the entry door</text>
+    <text x="700" y="200" text-anchor="middle" font-family="Inter,system-ui" font-size="14" fill="#3A3F52">volatile tools push toward</text><text x="700" y="218" text-anchor="middle" font-family="Inter,system-ui" font-size="14" fill="#3A3F52">what outlasts them</text>
+    <text x="500" y="338" text-anchor="middle" font-family="Inter,system-ui" font-size="14" fill="#3A3F52">new roles ask for judgment, not syntax</text>
+    <circle cx="500" cy="242" r="58" fill="#244CFF"></circle>
+    <text x="500" y="236" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="17" fill="#fff">What is worth</text>
+    <text x="500" y="258" text-anchor="middle" font-family="Newsreader,Georgia,serif" font-size="17" fill="#fff">learning now?</text>
+  </svg>
+  <figcaption>Each axis feeds the next. Read around the triangle, not down a list. The question in the middle is the one every framing above tries to ask well.</figcaption></figure>
+
+  <h2 id="comic" style="max-width:740px;margin-left:auto;margin-right:auto"><span class="syn-n">THE SHORT VERSION</span>As a comic</h2>
+  <div class="comic">
+    <figure class="panel" style="margin:0"><img src="comic/panel-01.webp" width="900" height="660" loading="lazy" alt="A small AI figure looks up at a staircase of task bars, each twice as long as the one below, while calendar pages fly away: My tasks keep getting longer!">
+      <figcaption class="cap"><span class="pn">01</span> Every ~4 months, the tasks an AI finishes alone double in length.<small>METR, 2026</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-02.webp" width="900" height="660" loading="lazy" alt="Price tags: $20 crossed out, $0.07 per million tokens, while a conveyor belt carries ever more boxes">
+      <figcaption class="cap"><span class="pn">02</span> The same capability got 280× cheaper in two years. Spending still grows.<small>Stanford AI Index, 2025</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-03.webp" width="900" height="660" loading="lazy" alt="A teenager with a diploma looks at a narrowly open door marked Entry level while older workers walk through a side corridor">
+      <figcaption class="cap"><span class="pn">03</span> The first door narrows: −13% for ages 22–25 in AI-exposed jobs.<small>Stanford, 2025 · descriptive, not causal</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-04.webp" width="900" height="660" loading="lazy" alt="A name badge reading Programmer, struck through, with tags: Architect? Engineer? Conductor? Builder? Not yet named">
+      <figcaption class="cap"><span class="pn">04</span> Writing code moves to the machine. The job title is up for grabs.<small>Synthesis of job-ad and research data</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-05.webp" width="900" height="660" loading="lazy" alt="A cow looks at the farmer by the fence but not at the market screen high above them">
+      <figcaption class="cap"><span class="pn">05</span> A historian’s image: the cow sees the farmer, not the market that runs her life.<small>Y. N. Harari, Czech TV, Oct 2026 · a lens, not a forecast</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-06.webp" width="900" height="660" loading="lazy" alt="Split panel: with an open chat the student leans back and scores minus 17 percent; with a designed tutor asking What would you try first, no drop">
+      <figcaption class="cap"><span class="pn">06</span> Same model, different design: open chat hurt the test without AI; a designed tutor didn’t.<small>Bastani et al., PNAS, 2025</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/panel-07.webp" width="900" height="660" loading="lazy" alt="A classroom with a basket of phones by the door while a teacher hands out paper exams and a student writes by hand">
+      <figcaption class="cap"><span class="pn">07</span> Meanwhile, learning walks back into the room: 58% of systems restrict phones.<small>UNESCO GEM, 2026</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/layers.webp" width="1200" height="880" loading="lazy" alt="Tools come and go on the surface; the thinking underneath stays">
+      <figcaption class="cap"><span class="pn">08</span> Underneath the churn: tools come and go, the thinking stays.<small>Framing from the synthesis</small></figcaption></figure>
+    <figure class="panel" style="margin:0"><img src="comic/framings-doors.webp" width="1200" height="880" loading="lazy" alt="Three doors: Work with AI, The science of AI, Learn to adapt">
+      <figcaption class="cap"><span class="pn">09</span> Three ways to answer: work with AI, the science of AI, or learning to adapt.<small>Section 6 · none marked as the right one</small></figcaption></figure>
+    <figure class="panel" style="margin:0;background:#244CFF"><img src="comic/panel-08.webp" width="900" height="660" loading="lazy" alt="What must a graduate be able to do without AI?">
+      <figcaption class="cap"><span class="pn">10</span> The question we are left with. On purpose, it has more than one good answer.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="chapter"><div class="col">
+  <h2 id="play"><span class="syn-n">TRY IT · SELF-RUN</span>Play the job hunt yourself</h2>
+  <p class="lead2">In the room, teams raced each other on this. Here you can play it alone: no code, no leaderboard. Twelve minutes on a real job board will tell you more about Axis 1 than any chart on this page.</p>
+</div>
+<div class="wide"><div class="game rv">
+  <div class="game-k">BU JOB LAB · CTF · SOLO MODE</div>
+  <h3>Spot 2026 in a job board with the dates removed.</h3>
+  <p>A mock Tel Aviv job board of 30 real ads, rewritten and shortened: some from 2019–2021, some from 2026, and some noise. Seven missions ask you to find patterns in what employers want and how they write it. The final boss: a CV for a young graduate that has to pass the board’s ATS.</p>
+  <div class="game-grid">
+    <div class="gcell"><b>12 min</b><span>on the clock</span></div>
+    <div class="gcell"><b>30 ads</b><span>real, anonymised, undated</span></div>
+    <div class="gcell"><b>7 + 1</b><span>missions and a final CV challenge</span></div>
+    <div class="gcell"><b>Solo</b><span>score stays in your browser</span></div>
+  </div>
+  <div class="btns">
+    <button class="syn-btn primary" id="play-here" type="button">▶ Play here</button>
+    <a class="syn-btn" href="/job-hunt-ctf/?solo" target="_blank" rel="noopener">Open full screen ↗</a>
+    <a class="syn-btn" href="/job-hunt-ctf/?solo&amp;reveal" target="_blank" rel="noopener">After playing: reveal the years ↗</a>
+  </div>
+  <div class="game-frame" id="game-frame"></div>
+  <small>Shown here at a fixed desktop resolution, scaled to fit. For the full-size version, use “Open full screen”. The interface is in Hebrew; the ads are in English. Nothing you type is sent anywhere in solo mode.</small>
+</div></div></section>
+
+<section class="chapter"><div class="col">
+  <h2 id="talk"><span class="syn-n">THE TALK</span>The slides (in Hebrew)</h2>
+  <p>The full talk this synthesis was drawn from, including the deep-dive sections. It is shared with the people who took part in the discussion; enter the access code you received to open it. Use the button in the corner, or press F, for full screen.</p>
+  <div class="talk"><iframe src="/job-hunt-ctf/talk/" title="Strategic discussion slides (Hebrew)" allow="fullscreen" allowfullscreen loading="lazy"></iframe></div>
+  <p class="small">Trainee photos, speaker notes and the live game were removed from this version.</p>
+
+
+  <h2 id="harari"><span class="syn-n">ADDENDUM</span>Yuval Noah Harari on the cows and the market</h2>
+  <div class="harari">
+    <div class="h-img"><img src="comic/panel-05.webp" width="900" height="660" loading="lazy" alt="A cow looks at the farmer by the fence but not at the market screen high above them"></div>
+    <div>
+      <p>In October 2026 the historian Yuval Noah Harari gave a 53-minute interview to <i>Hyde Park Civilizace</i>, the science and ideas programme of Czech public television (Česká televize), with an English version. The talk drew on one metaphor from it; this is a summary of the argument around it.</p>
+      <ol class="h-sum">
+        <li><b>The metaphor.</b> Cows know humans exist and can see them, but they have no idea money exists. You cannot explain the bond market to a cow, yet it decides what happens to her. In his words: “We are the cows of the future.”</li>
+        <li><b>The danger is not robots.</b> He rejects the picture of machines going into the streets to attack people. The shift he describes is quieter: AI gradually taking over the financial system and the bureaucracies that run daily life.</li>
+        <li><b>Why there.</b> Administration and finance reward what AI does well: holding and processing enormous amounts of information. No human banker can remember every transaction in a bank; an AI system can.</li>
+        <li><b>Where it leads.</b> Such systems could design financial and legal structures more sophisticated than people can follow. Humans would stay inside the system that governs their lives, but without meaningful control over how it works, on a horizon he puts at 10 to 20 years.</li>
+      </ol>
+      <p>It is included as a lens, not as evidence or a forecast. For education it sharpens two questions already on this page: what does it mean to <i>understand</i> a system, as a learning goal rather than a slogan (Framing B), and who is responsible for understanding systems nobody fully built (Axis 2)?</p>
+      <div class="h-links">
+        <a class="btn-l" href="https://player.ceskatelevize.cz/?autoStart=true&amp;origin=iVysilani&amp;usePlayability=true&amp;useNewPlaylist=true&amp;bonus=47309&amp;channelID=3&amp;startTime=52" target="_blank" rel="noopener">▶ Watch from 0:52, where the cow image begins ↗</a>
+        <a class="btn-l ghost" href="https://www.ceskatelevize.cz/porady/10441294653-hyde-park-civilizace/9271-english-versions/47309/" target="_blank" rel="noopener">The full programme page ↗</a>
+      </div>
+      <p class="small">Summary based on the interview as reported by <a href="https://www.calcalistech.com/ctechnews/article/jp9hpl0rh" rel="noopener">Ctech (Lital Samet, 19 Oct 2026)</a>, which quotes it at length; the broadcast itself has no published transcript or subtitles. The player does not allow embedding, so it opens in a new tab.</p>
+    </div>
+  </div>
+
+  <h2 id="about"><span class="syn-n">ABOUT THIS WORK</span>Where it was made</h2>
+  <div class="org">
+    <img src="bu-logo.png" alt="BU. Be the Future You. By BeNetivei Udi" width="200" height="96">
+    <div>
+      <p>This research and synthesis were carried out at <b>Be’Netivei Udi (BU)</b>, an Israeli nonprofit running national technology-education programs for teenagers, as preparation for an internal strategic discussion held in November 2026.</p>
+      <p>The views and framings are the author’s and do not represent an official organisational position. Public data is cited as published; internal program details were left out.</p>
+    </div>
+  </div>
+
+  <h2 id="refs"><span class="syn-n">SOURCES</span>References</h2>
+  <p>Numbers in the text refer to this list, ordered by first mention. Hebrew-language and company sources without a stable public link are listed without one.</p>
+  <details class="refbox" id="refbox">
+    <summary><span>Show all 33 references</span><i>▾</i></summary>
+    <ol class="reflist">
+      <li id="r-1">FrogHire (2026). <i>AI Readiness Report</i>: analysis of 20.7 million US job ads.</li>
+      <li id="r-2">Brynjolfsson, E., Chandar, B., &amp; Chen, R. (2025). <i>Canaries in the coal mine? Six facts about the recent employment effects of artificial intelligence</i>. Stanford Digital Economy Lab. <a href="https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/" target="_blank" rel="noopener">digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine</a></li>
+      <li id="r-3">Indeed Hiring Lab (May 2026). Software development job postings and AI mentions. <a href="https://www.hiringlab.org/" target="_blank" rel="noopener">www.hiringlab.org</a></li>
+      <li id="r-4">Google (Apr 2026). Google Cloud Next keynote remarks on AI-generated code.</li>
+      <li id="r-5">Carta (2025). <i>Solo Founders Report</i>.</li>
+      <li id="r-6">Stack Overflow (2025). <i>Developer Survey 2025</i>. <a href="https://survey.stackoverflow.co/2025/" target="_blank" rel="noopener">survey.stackoverflow.co/2025</a></li>
+      <li id="r-7">World Economic Forum (2025). <i>The Future of Jobs Report 2025</i>. <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener">www.weforum.org/publications/the-future-of-jobs-report-2025</a></li>
+      <li id="r-8">Wilmers, N., Catipon, R., Massenkoff, M., &amp; McCrory, P. (2026). <i>How employment is changing at Anthropic</i>. The Anthropic Institute. <a href="https://www.anthropic.com/research/employment-at-anthropic" target="_blank" rel="noopener">www.anthropic.com/research/employment-at-anthropic</a></li>
+      <li id="r-9">METR (2026). <i>Time Horizon 1.1</i>; building on Kwa, T., et al. (2025). Measuring AI ability to complete long tasks. arXiv:2503.14499. <a href="https://arxiv.org/abs/2503.14499" target="_blank" rel="noopener">arxiv.org/abs/2503.14499</a></li>
+      <li id="r-10">Stanford HAI (2025). <i>AI Index Report 2025</i>. <a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" rel="noopener">hai.stanford.edu/ai-index/2025-ai-index-report</a></li>
+      <li id="r-11">Epoch AI (2025). LLM inference price trends. <a href="https://epoch.ai/data-insights/llm-inference-price-trends" target="_blank" rel="noopener">epoch.ai/data-insights/llm-inference-price-trends</a></li>
+      <li id="r-12">Grace, K., et al. (2024). Thousands of AI authors on the future of AI. arXiv:2401.02843; AI Impacts expert surveys; Metaculus forecasts. <a href="https://arxiv.org/abs/2401.02843" target="_blank" rel="noopener">arxiv.org/abs/2401.02843</a></li>
+      <li id="r-13">Future of Life Institute (2023). <i>Pause giant AI experiments: An open letter</i>; UK Government (2023), Bletchley Declaration; Sidley Austin (2026), EU AI Act timeline. <a href="https://futureoflife.org/open-letter/pause-giant-ai-experiments/" target="_blank" rel="noopener">futureoflife.org/open-letter/pause-giant-ai-experiments</a></li>
+      <li id="r-14">Samet, L. (19 Oct 2026). Yuval Noah Harari on AI: “We are the cows of the future”. <i>Ctech</i>; reporting on Harari’s interview in <i>Hyde Park Civilizace</i>, Česká televize (Oct 2026). <a href="https://www.calcalistech.com/ctechnews/article/jp9hpl0rh" target="_blank" rel="noopener">www.calcalistech.com/ctechnews/article/jp9hpl0rh</a></li>
+      <li id="r-15">Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting. <i>Scientific Reports</i>. <a href="https://doi.org/10.1038/s41598-025-97652-6" target="_blank" rel="noopener">doi.org/10.1038/s41598-025-97652-6</a></li>
+      <li id="r-16">De Simone, M., Tiberti, F., Barron Rodriguez, M., Manolio, F., Mosuro, W., &amp; Dikoru, E. J. (2025). <i>From chalkboards to chatbots: Evaluating the impact of generative AI on learning outcomes in Nigeria</i>. World Bank Policy Research Working Paper 11125. <a href="https://doi.org/10.1596/1813-9450-11125" target="_blank" rel="noopener">doi.org/10.1596/1813-9450-11125</a></li>
+      <li id="r-17">Oreopoulos, P., &amp; Low, C. (2026). NBER Working Paper 35620. <a href="https://www.nber.org/papers/w35620" target="_blank" rel="noopener">www.nber.org/papers/w35620</a></li>
+      <li id="r-18">Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., &amp; Mariman, R. (2025). Generative AI without guardrails can harm learning: Evidence from high school mathematics. <i>PNAS</i>, 122(26). <a href="https://doi.org/10.1073/pnas.2422633122" target="_blank" rel="noopener">doi.org/10.1073/pnas.2422633122</a></li>
+      <li id="r-19">Shen, J., &amp; Tamkin, A. (2026). Study of AI delegation and code comprehension (52 developers). Anthropic, preprint.</li>
+      <li id="r-20">UNESCO (2026). <i>Global Education Monitoring Report</i>; reporting in the Wall Street Journal and from the University of Sydney on in-person assessment.</li>
+      <li id="r-21">Anthropic (2025). <i>Anthropic Education Report: How university students use Claude</i>. <a href="https://www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude" target="_blank" rel="noopener">www.anthropic.com/news/anthropic-education-report-how-university-students-use-claude</a></li>
+      <li id="r-22">Scherer, R., Siddiq, F., &amp; Sánchez Viveros, B. (2019). The cognitive benefits of learning computer programming: A meta-analysis of transfer effects. <i>Journal of Educational Psychology</i>, 111(5), 764–792. <a href="https://doi.org/10.1037/edu0000314" target="_blank" rel="noopener">doi.org/10.1037/edu0000314</a></li>
+      <li id="r-23">Sala, G., &amp; Gobet, F. (2017). Does far transfer exist? Negative evidence from chess, music, and working memory training. <i>Current Directions in Psychological Science</i>, 26(6). <a href="https://doi.org/10.1177/0963721417712760" target="_blank" rel="noopener">doi.org/10.1177/0963721417712760</a></li>
+      <li id="r-24">OECD &amp; European Commission (2026). <i>Empowering Learners for the Age of AI: An AI Literacy Framework for Primary and Secondary Education</i>. <a href="https://ailiteracyframework.org/" target="_blank" rel="noopener">ailiteracyframework.org</a></li>
+      <li id="r-25">Israel Ministry of Education (Apr 2026). <i>Strategic focus for the 2026–27 school year</i> (Hebrew).</li>
+      <li id="r-26">Israel Ministry of Education (Aug 2026). Computer-science chief inspector circular (Hebrew).</li>
+      <li id="r-27">pc.co.il (30 Aug 2026). Interview with the Ministry of Education on the AI scientists major; ynet (2025), “Matriculation in AI” (Hebrew).</li>
+      <li id="r-28"><i>Hebetim</i> 53 (Technion, Dec 2025); edunow, Ministry of Education (Hebrew).</li>
+      <li id="r-29">Israel Employment Service data, as reported by Maariv (May 2026) (Hebrew).</li>
+      <li id="r-30">Council for Higher Education enrollment data, as reported by Times of Israel and ynet (Oct 2026).</li>
+      <li id="r-31">OECD (2026). <i>Education at a Glance 2026</i>, as reported by Ynetnews. <a href="https://www.ynetnews.com/business/article/hk7b4s9qme" target="_blank" rel="noopener">www.ynetnews.com/business/article/hk7b4s9qme</a></li>
+      <li id="r-32">Israel Innovation Authority (Jan and Aug 2026). Employer and hi-tech workforce surveys.</li>
+      <li id="r-33">Miao, F., &amp; Shiohira, K. (2024). <i>AI competency framework for students</i>. UNESCO. <a href="https://doi.org/10.54675/JKJB9835" target="_blank" rel="noopener">doi.org/10.54675/JKJB9835</a></li>
+    </ol>
+  </details>
+</div>
+</main>
+<footer class="foot" id="contact">
+  <div class="wrap foot-in">
+    <a class="foot-talk" href="https://calendar.app.google/bDE77A7Af282fTHZ9" data-book rel="noopener">Let’s talk <span class="ne" aria-hidden="true">↗</span></a>
+    <span class="foot-links"><a href="mailto:aviramw.dm@gmail.com">aviramw.dm@gmail.com</a><a href="https://linkedin.com/in/aviramw" rel="me">LinkedIn</a><a href="https://github.com/ThisIsAviram" rel="me">GitHub</a></span>
+    <p class="foot-sign">Curiosity, with the discipline to build.</p>
+  </div>
+</footer>
+<dialog class="book-dialog" id="book" aria-label="Book a meeting">
+  <div class="book-head">
+    <p class="label">Book a meeting</p>
+    <a class="tlink" href="https://calendar.app.google/bDE77A7Af282fTHZ9" target="_blank" rel="noopener">Open in Google Calendar <span class="ne" aria-hidden="true">↗</span></a>
+    <button class="x" type="button" data-close aria-label="Close">×</button>
+  </div>
+  <iframe title="Booking calendar" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2asUCZhAo2J0IAsV2cTZ1OgbEJQGOqu2N4eyRBMwd-3xSbpMm2X-0wYHUrrPLh40jcDutzR2oN?gv=true" loading="lazy"></iframe>
+</dialog>
+<script src="/static/site.js?v=92c17a42" defer></script>
+<script src="/static/patterns.js?v=fd474317" defer></script>
+<a class="totop" id="totop" href="#main" aria-label="Back to top">↑</a>
+<script>
+(() => {
+  const pr = document.getElementById("progress"), tt = document.getElementById("totop");
+  const onScroll = () => { const h = document.documentElement, m = h.scrollHeight - h.clientHeight; pr.style.transform = "scaleX(" + (m > 0 ? h.scrollTop / m : 0) + ")"; tt.classList.toggle("on", h.scrollTop > 900); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".rv").forEach(el => io.observe(el));
+    const links = [...document.querySelectorAll(".syn-toc a")], map = new Map(links.map(a => [a.getAttribute("href").slice(1), a]));
+    const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { links.forEach(a => a.classList.remove("on")); const a = map.get(e.target.id); if (a) a.classList.add("on"); } }), { rootMargin: "-20% 0px -70% 0px" });
+    map.forEach((a, id) => { const el = document.getElementById(id); if (el) so.observe(el); });
+  } else document.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+
+
+  /* keep the side TOC clear of the site's sticky header (it hides on scroll down and returns on scroll up) */
+  (() => { const toc = document.querySelector(".syn-toc"), hd = document.querySelector("header.top"); if (!toc || !hd) return;
+    const place = () => { const r = hd.getBoundingClientRect(), bottom = Math.max(0, r.bottom), t = Math.max(24, bottom + 24);
+      toc.style.top = t + "px"; toc.style.maxHeight = (innerHeight - t - 24) + "px"; };
+    addEventListener("scroll", place, { passive: true }); addEventListener("resize", place); hd.addEventListener("transitionend", place); place(); setInterval(place, 400); })();
+  /* audio version */
+  (() => {
+    const au = document.getElementById("lp-audio"), b = document.getElementById("lp-btn"), fill = document.getElementById("lp-fill"), bar = document.getElementById("lp-bar"),
+      tm = document.getElementById("lp-time"), chl = document.getElementById("lp-ch"), more = document.getElementById("lp-more"), panel = document.getElementById("lp-panel");
+    let M = null; const fmt = x => { x = Math.max(0, Math.floor(x || 0)); return Math.floor(x / 60) + ":" + String(x % 60).padStart(2, "0"); };
+    fetch("podcast/meta.json").then(r => r.json()).then(m => { M = m;
+      document.getElementById("lp-chs").innerHTML = m.chapters.map((c, i) => '<li data-t="' + c.t + '"><span>' + fmt(c.t) + '</span>' + c.title + '</li>').join("");
+      document.getElementById("lp-tx").innerHTML = m.lines.map(l => '<p data-t="' + l.t + '" data-s="' + l.s + '"><b>' + (l.s === "H" ? "HOST" : "GUIDE") + '</b>' + l.x.replace(/&/g, "&amp;").replace(/</g, "&lt;") + '</p>').join("");
+      document.getElementById("lp-marks").innerHTML = m.chapters.slice(1).map(c => '<i style="left:' + (100 * c.t / m.dur) + '%"></i>').join("");
+      tm.textContent = "0:00 / " + fmt(m.dur); }).catch(() => {});
+    b.addEventListener("click", () => au.paused ? au.play() : au.pause());
+    au.addEventListener("play", () => { b.textContent = "❚❚"; b.setAttribute("aria-label", "Pause"); });
+    au.addEventListener("pause", () => { b.textContent = "▶"; b.setAttribute("aria-label", "Play the audio version"); });
+    bar.addEventListener("click", e => { const r = bar.getBoundingClientRect(), d = au.duration || (M && M.dur); if (d) { au.currentTime = d * (e.clientX - r.left) / r.width; if (au.paused) au.play(); } });
+    more.addEventListener("click", () => { const on = panel.classList.toggle("on"); more.textContent = on ? "Chapters & transcript ▴" : "Chapters & transcript ▾"; });
+    panel.addEventListener("click", e => { const el = e.target.closest("[data-t]"); if (el) { au.currentTime = +el.dataset.t; au.play(); } });
+    let last = -1;
+    au.addEventListener("timeupdate", () => { const d = au.duration || (M && M.dur) || 1, t = au.currentTime; fill.style.width = (100 * t / d) + "%"; tm.textContent = fmt(t) + " / " + fmt(d);
+      if (!M) return; let ci = 0; M.chapters.forEach((c, i) => { if (t >= c.t) ci = i; }); chl.textContent = M.chapters[ci].title;
+      document.querySelectorAll("#lp-chs li").forEach((li, i) => li.classList.toggle("on", i === ci));
+      let li2 = 0; M.lines.forEach((l, i) => { if (t >= l.t) li2 = i; });
+      if (li2 !== last) { last = li2; const ps = document.querySelectorAll("#lp-tx p"); ps.forEach((p, i) => p.classList.toggle("on", i === li2));
+        if (panel.classList.contains("on") && ps[li2]) { const tx = document.getElementById("lp-tx"); tx.scrollTo({ top: ps[li2].offsetTop - tx.offsetTop - 60, behavior: "smooth" }); } } });
+  })();
+  document.addEventListener("click", e => { const a = e.target.closest(".cite a"); if (!a) return; const box = document.getElementById("refbox"); if (box) box.open = true; });
+  if (/^#r-\d+/.test(location.hash)) { const box = document.getElementById("refbox"); if (box) box.open = true; }
+  const btn = document.getElementById("play-here"), fr = document.getElementById("game-frame");
+  /* The game is laid out for a fixed 1440×900 desktop screen: render it at that size and scale it to fit, instead of letting it fall into its narrow layout. */
+  const fit = () => { const f = fr.querySelector("iframe"); if (f && fr.clientWidth) f.style.transform = "scale(" + fr.clientWidth / 1440 + ")"; };
+  addEventListener("resize", fit);
+  btn.addEventListener("click", () => {
+    if (!fr.firstChild) fr.innerHTML = '<iframe src="/job-hunt-ctf/?solo" title="BU Job Lab, solo mode (Hebrew)" width="1440" height="900" allow="fullscreen" allowfullscreen></iframe>';
+    const on = fr.classList.toggle("on"); btn.textContent = on ? "■ Close the game" : "▶ Play here"; fit();
+    if (on) fr.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+</body>
+</html>
